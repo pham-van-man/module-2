@@ -10,18 +10,17 @@ public class DocSoThanhChu {
         if (number < 0 || number >= 1000) {
             System.out.println("Out of ability");
         } else if (number < 10) {
-            System.out.println(readSingleDigit(number));
+            System.out.println(readNumbersLessThan10(number));
         } else if (number < 20) {
-            System.out.println(readTeen(number));
+            System.out.println(readNumbersFrom10To20(number));
         } else if (number < 100) {
-            System.out.println(readTens(number));
+            System.out.println(readNumbersGreaterThan20(number));
         } else {
-            System.out.println(readHundreds(number));
+            System.out.println(readNumbersGreaterThan100(number));
         }
-        scanner.close();
     }
 
-    private static String readSingleDigit(int number) {
+    private static String readNumbersLessThan10(int number) {
         switch (number) {
             case 0:
                 return "zero";
@@ -48,7 +47,7 @@ public class DocSoThanhChu {
         }
     }
 
-    private static String readTeen(int number) {
+    private static String readNumbersFrom10To20(int number) {
         switch (number) {
             case 10:
                 return "ten";
@@ -75,11 +74,11 @@ public class DocSoThanhChu {
         }
     }
 
-    private static String readTens(int number) {
-        int tens = number / 10;
-        int ones = number % 10;
+    private static String readNumbersGreaterThan20(int number) {
+        int first = number / 10;
+        int last = number % 10;
         String result = "";
-        switch (tens) {
+        switch (first) {
             case 2:
                 result = "twenty";
                 break;
@@ -105,23 +104,23 @@ public class DocSoThanhChu {
                 result = "ninety";
                 break;
         }
-        if (ones != 0) {
-            result += " " + readSingleDigit(ones);
+        if (last != 0) {
+            result += " " + readNumbersLessThan10(last);
         }
         return result;
     }
 
-    private static String readHundreds(int number) {
-        int hundreds = number / 100;
-        int remainder = number % 100;
-        String result = readSingleDigit(hundreds) + " hundred";
-        if (remainder != 0) {
-            if (remainder < 10) {
-                result += " and " + readSingleDigit(remainder);
-            } else if (remainder < 20) {
-                result += " and " + readTeen(remainder);
+    private static String readNumbersGreaterThan100(int number) {
+        int fist = number / 100;
+        int last = number % 100;
+        String result = readNumbersLessThan10(fist) + " hundred";
+        if (last != 0) {
+            if (last < 10) {
+                result += " and " + readNumbersLessThan10(last);
+            } else if (last < 20) {
+                result += " and " + readNumbersFrom10To20(last);
             } else {
-                result += " and " + readTens(remainder);
+                result += " and " + readNumbersGreaterThan20(last);
             }
         }
         return result;
