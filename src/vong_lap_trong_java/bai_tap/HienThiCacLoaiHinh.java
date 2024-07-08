@@ -11,6 +11,7 @@ public class HienThiCacLoaiHinh {
             System.out.println("1. ve hinh tam giac vuong duoi");
             System.out.println("2. ve hinh tam giac vuong tren");
             System.out.println("3. ve hinh chu nhat");
+            System.out.println("4. ve hinh tam giac can");
             System.out.println("0. thoat");
             luaChon = sc.nextByte();
             hienThiHinhAnh(luaChon);
@@ -46,6 +47,18 @@ public class HienThiCacLoaiHinh {
                     System.out.printf("%n");
                 }
                 break;
+            case 4:
+                System.out.println("ve hinh tam giac can");
+                for (int i = 0; i < 5; i++) {
+                    for (int j = 0; j < 5 + i; j++) {
+                        if (j > 3 - i) {
+                            System.out.print("*");
+                        } else {
+                            System.out.printf("%s", " ");
+                        }
+                    }
+                    System.out.printf("%n");
+                }
             case 0:
                 System.exit(0);
             default:
