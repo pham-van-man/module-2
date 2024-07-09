@@ -2,7 +2,7 @@ package ss3_mang_va_phuong_thuc_trong_java.bai_tap;
 
 import java.util.Scanner;
 
-public class TimPhanTuLonNhatTrongMangHaiChien {
+public class TimPhanTuLonNhatTrongMangHaiChieu {
     public static void main(String[] args) {
         System.out.println("Nhap so dong:");
         Scanner sc = new Scanner(System.in);
