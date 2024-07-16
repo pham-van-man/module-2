@@ -2,7 +2,7 @@ package ss10_arraylist.bai_tap.bai_tap_1;
 
 public class MyList<E> {
     private int size;
-    public static final int DEFAULT_CAPACITY = 8;
+    private static final int DEFAULT_CAPACITY = 8;
     private E[] array = (E[]) new Object[DEFAULT_CAPACITY];
 
     public MyList() {
@@ -53,7 +53,7 @@ public class MyList<E> {
     }
 
 //    public E clone() {
-//     //???
+//    //???
 //    }
 
     public boolean contains(E element) {
@@ -73,9 +73,8 @@ public class MyList<E> {
         }
         return -1;
     }
-
-    //    public boolean add(E element) {
-//        //???
+//    public boolean add(E element) {
+//    //???
 //    }
     public E get(int index) {
         ensureIndex(index);

@@ -1,13 +1,13 @@
 package study_case.model;
 
-public class Teacher {
+public abstract class Member {
     private int id;
     private String name;
 
-    public Teacher() {
+    public Member() {
     }
 
-    public Teacher(int id, String name) {
+    public Member(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -30,7 +30,7 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" +
+        return "Member{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
