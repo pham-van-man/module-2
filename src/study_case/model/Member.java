@@ -3,6 +3,11 @@ package study_case.model;
 public abstract class Member {
     private int id;
     private String name;
+    private int age;
+    private String phoneNumber;
+    private String email;
+    private String address;
+
 
     public Member() {
     }
@@ -10,6 +15,36 @@ public abstract class Member {
     public Member(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Member(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Member(String phoneNumber, int age, String name, int id) {
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+        this.name = name;
+        this.id = id;
+    }
+
+    public Member(int id, String name, int age, String phoneNumber, String email) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+    public Member(int id, String name, int age, String phoneNumber, String email, String address) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
     }
 
     public int getId() {
@@ -28,11 +63,47 @@ public abstract class Member {
         this.name = name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "Member{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", age=" + age +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

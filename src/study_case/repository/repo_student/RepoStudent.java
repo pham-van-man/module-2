@@ -1,0 +1,35 @@
+package study_case.repository.repo_student;
+
+import study_case.model.Student;
+
+import java.util.LinkedList;
+
+public class RepoStudent implements InterfaceRepoStudent {
+    private static LinkedList<Student> listStudents = new LinkedList<>();
+
+    static {
+        Student student1 = new Student(01, "Pham Van Man", 22, "0123456789", "phamvanman@gmail.com", "TT-Huế");
+        listStudents.add(student1);
+    }
+
+    @Override
+    public LinkedList<Student> findAllData() {
+        return listStudents;
+    }
+
+    @Override
+    public void saveData(Student student) {
+        listStudents.add(student);
+    }
+
+    @Override
+    public Student deleteData(int id) {
+        for (Student student : listStudents) {
+            if (student.getId() == id) {
+                listStudents.remove(student);
+                return student;
+            }
+        }
+        return null;
+    }
+}
