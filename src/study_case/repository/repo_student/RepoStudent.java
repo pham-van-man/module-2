@@ -4,7 +4,7 @@ import study_case.model.Student;
 
 import java.util.LinkedList;
 
-public class RepoStudent implements InterfaceRepoStudent {
+public class RepoStudent implements IRepoStudent {
     private static LinkedList<Student> listStudents = new LinkedList<>();
 
     static {
@@ -13,17 +13,17 @@ public class RepoStudent implements InterfaceRepoStudent {
     }
 
     @Override
-    public LinkedList<Student> findAllData() {
+    public LinkedList<Student> findAll() {
         return listStudents;
     }
 
     @Override
-    public void saveData(Student student) {
+    public void save(Student student) {
         listStudents.add(student);
     }
 
     @Override
-    public Student deleteData(int id) {
+    public Student delete(int id) {
         for (Student student : listStudents) {
             if (student.getId() == id) {
                 listStudents.remove(student);
@@ -31,5 +31,10 @@ public class RepoStudent implements InterfaceRepoStudent {
             }
         }
         return null;
+    }
+
+    @Override
+    public void update(int index, Student student) {
+        listStudents.set(index, student);
     }
 }

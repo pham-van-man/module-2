@@ -4,32 +4,37 @@ import study_case.model.Instructor;
 
 import java.util.LinkedList;
 
-public class RepoInstructor implements InterfaceRepoInstructor {
-    private static LinkedList<Instructor> listinstructor = new LinkedList<>();
+public class RepoInstructor implements IRepoInstructor {
+    private static LinkedList<Instructor> listInstructor = new LinkedList<>();
 
     static {
         Instructor instructor1 = new Instructor(01, "Nguyen Thanh Cong", 0, "0123456789", "abcxyz@gmail.com", "abcxyz");
-        listinstructor.add(instructor1);
+        listInstructor.add(instructor1);
     }
 
     @Override
-    public LinkedList<Instructor> findAllData() {
-        return listinstructor;
+    public LinkedList<Instructor> findAll() {
+        return listInstructor;
     }
 
     @Override
-    public void saveData(Instructor instructor) {
-        listinstructor.add(instructor);
+    public void save(Instructor instructor) {
+        listInstructor.add(instructor);
     }
 
     @Override
-    public Instructor deleteData(int id) {
-        for (Instructor instructor : listinstructor) {
+    public Instructor delete(int id) {
+        for (Instructor instructor : listInstructor) {
             if (instructor.getId() == id) {
-                listinstructor.remove(instructor);
+                listInstructor.remove(instructor);
                 return instructor;
             }
         }
         return null;
+    }
+
+    @Override
+    public void update(int index, Instructor instructor) {
+        listInstructor.set(index, instructor);
     }
 }

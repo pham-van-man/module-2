@@ -1,26 +1,31 @@
 package study_case.service.service_student;
 
 import study_case.model.Student;
-import study_case.repository.repo_student.InterfaceRepoStudent;
+import study_case.repository.repo_student.IRepoStudent;
 import study_case.repository.repo_student.RepoStudent;
 
 import java.util.LinkedList;
 
-public class ServiceStudent implements InterfaceServiceStudent {
-    private static InterfaceRepoStudent rStudent = new RepoStudent();
+public class ServiceStudent implements IServiceStudent {
+    private static IRepoStudent repoStudent = new RepoStudent();
 
     @Override
     public LinkedList<Student> findAll() {
-        return rStudent.findAllData();
+        return repoStudent.findAll();
     }
 
     @Override
     public void add(Student student) {
-        rStudent.saveData(student);
+        repoStudent.save(student);
     }
 
     @Override
     public Student delete(int id) {
-        return rStudent.deleteData(id);
+        return repoStudent.delete(id);
+    }
+
+    @Override
+    public void update(int index, Student student) {
+        repoStudent.update(index, student);
     }
 }

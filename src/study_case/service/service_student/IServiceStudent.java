@@ -4,10 +4,12 @@ import study_case.model.Student;
 
 import java.util.LinkedList;
 
-public interface InterfaceServiceStudent {
+public interface IServiceStudent {
     LinkedList<Student> findAll();
 
     void add(Student student);
 
     Student delete(int id);
+
+    void update(int index, Student student);
 }

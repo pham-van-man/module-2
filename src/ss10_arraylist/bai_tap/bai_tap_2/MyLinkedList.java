@@ -34,7 +34,6 @@ public class MyLinkedList<E> {
             temp.next.next = holder;
             size++;
         }
-
     }
 
     public void addFirst(E data) {
