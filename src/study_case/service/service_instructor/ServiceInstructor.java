@@ -28,4 +28,14 @@ public class ServiceInstructor implements IServiceInstructor {
     public void update(int index, Instructor instructor) {
         repoInstructor.update(index, instructor);
     }
+
+    @Override
+    public boolean isEmpty(int id) {
+        return repoInstructor.isEmpty(id);
+    }
+
+    @Override
+    public int getIndex(int id) {
+        return repoInstructor.getIndex(id);
+    }
 }

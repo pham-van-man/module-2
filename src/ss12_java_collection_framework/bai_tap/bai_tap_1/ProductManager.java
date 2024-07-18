@@ -68,7 +68,7 @@ public class ProductManager {
             System.out.println("Quản lý sản phẩm");
             System.out.println(
                     "1. Hiển thị sản phẩm " + "\n" +
-                            "2.Thêm sản phẩm" + "\n" +
+                            "2. Thêm sản phẩm" + "\n" +
                             "3. Xóa sản phẩm" + "\n" +
                             "4. Chỉnh sửa sản phẩm" + "\n" +
                             "5. Tìm sản phẩm" + "\n" +

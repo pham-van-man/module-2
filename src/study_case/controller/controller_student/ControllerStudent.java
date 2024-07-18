@@ -98,24 +98,13 @@ public class ControllerStudent {
             System.out.println("Nhập địa chỉ");
             String address = sc.nextLine();
             Student students = new Student(id, name, age, phoneNumber, email, address);
-            int index = 0;
-            for (Student student : listStudents) {
-                if (student.getId() == id) {
-                    index = listStudents.indexOf(student);
-                    break;
-                }
-            }
+            int index = listStudents.indexOf(id);
             serviceStudent.update(index, students);
             System.out.println("Chỉnh sửa thành công");
         }
     }
 
     private static boolean isEmpty(int id) {
-        for (Student student : listStudents) {
-            if (student.getId() == id) {
-                return true;
-            }
-        }
-        return false;
+        return serviceStudent.isEmpty(id);
     }
 }

@@ -6,9 +6,10 @@ import java.util.LinkedList;
 
 public class RepoStudent implements IRepoStudent {
     private static LinkedList<Student> listStudents = new LinkedList<>();
+    private static int idStudent;
 
     static {
-        Student student1 = new Student(01, "Pham Van Man", 22, "0123456789", "phamvanman@gmail.com", "TT-Huế");
+        Student student1 = new Student(idStudent, "Pham Van Man", 22, "0123456789", "phamvanman@gmail.com", "TT-Huế");
         listStudents.add(student1);
     }
 
@@ -36,5 +37,25 @@ public class RepoStudent implements IRepoStudent {
     @Override
     public void update(int index, Student student) {
         listStudents.set(index, student);
+    }
+
+    @Override
+    public boolean isEmpty(int id) {
+        for (Student student : listStudents) {
+            if (student.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int getIndex(int id) {
+        for (Student student : listStudents) {
+            if (student.getId() == id) {
+                return listStudents.indexOf(student);
+            }
+        }
+        return -1;
     }
 }

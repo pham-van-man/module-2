@@ -28,4 +28,14 @@ public class ServiceStudent implements IServiceStudent {
     public void update(int index, Student student) {
         repoStudent.update(index, student);
     }
+
+    @Override
+    public boolean isEmpty(int id) {
+        return repoStudent.isEmpty(id);
+    }
+
+    @Override
+    public int getIndex(int id) {
+        return repoStudent.getIndex(id);
+    }
 }

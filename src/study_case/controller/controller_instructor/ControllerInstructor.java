@@ -72,12 +72,7 @@ public class ControllerInstructor {
     }
 
     private static boolean isEmpty(int id) {
-        for (Instructor instructor : listInstructor) {
-            if (instructor.getId() == id) {
-                return true;
-            }
-        }
-        return false;
+        return serviceInstructor.isEmpty(id);
     }
 
     public static void delete() {
@@ -108,13 +103,7 @@ public class ControllerInstructor {
             System.out.println("Nhập địa chỉ");
             String address = sc.nextLine();
             Instructor instructor = new Instructor(id, name, age, phoneNumber, email, address);
-            int index = 0;
-            for (Instructor instructors : listInstructor) {
-                if (instructors.getId() == id) {
-                    index = listInstructor.indexOf(instructors);
-                    break;
-                }
-            }
+            int index = serviceInstructor.getIndex(id);
             serviceInstructor.update(index, instructor);
             System.out.println("Chỉnh sửa thành công");
         }

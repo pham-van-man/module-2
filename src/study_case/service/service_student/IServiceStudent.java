@@ -12,4 +12,8 @@ public interface IServiceStudent {
     Student delete(int id);
 
     void update(int index, Student student);
+
+    boolean isEmpty(int id);
+
+    int getIndex(int id);
 }

@@ -12,4 +12,8 @@ public interface IRepoInstructor {
     Instructor delete(int id);
 
     void update(int index, Instructor instructor);
+
+    boolean isEmpty(int id);
+
+    int getIndex(int id);
 }
