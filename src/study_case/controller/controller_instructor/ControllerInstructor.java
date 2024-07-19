@@ -4,6 +4,9 @@ import study_case.model.Instructor;
 import study_case.service.service_instructor.ServiceInstructor;
 import study_case.service.service_instructor.IServiceInstructor;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -19,7 +22,8 @@ public class ControllerInstructor {
                     "2.Thêm mới \n" +
                     "3.Chỉnh sửa\n" +
                     "4.Xóa\n" +
-                    "5.Thoát\n");
+                    "5.Lưu\n" +
+                    "6.Thoát\n");
             int choose = Integer.parseInt(sc.nextLine());
             switch (choose) {
                 case 1:
@@ -35,6 +39,9 @@ public class ControllerInstructor {
                     delete();
                     break;
                 case 5:
+                    save();
+                    break;
+                case 6:
                     return;
                 default:
                     System.out.println("Không có lựa chọn này");
@@ -106,6 +113,15 @@ public class ControllerInstructor {
             int index = serviceInstructor.getIndex(id);
             serviceInstructor.update(index, instructor);
             System.out.println("Chỉnh sửa thành công");
+        }
+    }
+
+    public static void save() {
+        try {
+            ObjectOutputStream data = new ObjectOutputStream(new FileOutputStream("list_instructor.ser"));
+            data.writeObject(listInstructor);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

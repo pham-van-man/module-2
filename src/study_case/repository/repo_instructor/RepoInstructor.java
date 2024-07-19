@@ -2,14 +2,21 @@ package study_case.repository.repo_instructor;
 
 import study_case.model.Instructor;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.LinkedList;
 
 public class RepoInstructor implements IRepoInstructor {
-    private static LinkedList<Instructor> listInstructor = new LinkedList<>();
+    private static LinkedList<Instructor> listInstructor;
 
     static {
-        Instructor instructor1 = new Instructor(0, "Nguyen Thanh Cong", 0, "0123456789", "abcxyz@gmail.com", "abcxyz");
-        listInstructor.add(instructor1);
+        try {
+            ObjectInputStream data = new ObjectInputStream(new FileInputStream("list_instructor.ser"));
+            listInstructor= (LinkedList<Instructor>) data.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
