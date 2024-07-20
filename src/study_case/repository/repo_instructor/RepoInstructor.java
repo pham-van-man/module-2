@@ -5,7 +5,7 @@ import study_case.model.Instructor;
 import java.io.*;
 import java.util.LinkedList;
 
-public class RepoInstructor implements IRepoInstructor {
+public class RepoInstructor implements IRepoInstructor{
     private static LinkedList<Instructor> listInstructor;
 
     static {
@@ -72,4 +72,5 @@ public class RepoInstructor implements IRepoInstructor {
             throw new RuntimeException(e);
         }
     }
+
 }

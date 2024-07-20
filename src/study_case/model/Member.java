@@ -1,6 +1,7 @@
 package study_case.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public abstract class Member implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -108,5 +109,18 @@ public abstract class Member implements Serializable {
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return id == member.id && Objects.equals(phoneNumber, member.phoneNumber) && Objects.equals(email, member.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, phoneNumber, email);
     }
 }
