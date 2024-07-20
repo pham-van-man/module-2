@@ -1,43 +1,28 @@
 package ss13_thuat_toan_tim_kiem.bai_tap.bai_tap_1;
 
-import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Nhập chuỗi: ");
-        String string = input.nextLine();
-        LinkedList<Character> max = new LinkedList<>();
+        Scanner sc = new Scanner(System.in);
+        String string = sc.nextLine();
+        Stack<Character> stringMax = new Stack<>();
         for (int i = 0; i < string.length(); i++) {
-            LinkedList<Character> list = new LinkedList<>();
+            Stack<Character> list = new Stack<>();
             list.add(string.charAt(i));
             for (int j = i + 1; j < string.length(); j++) {
-                if (string.charAt(j) > list.getLast()) {
+                if (string.charAt(j) > list.peek()) {
                     list.add(string.charAt(j));
-                } else {
-                    break;
                 }
             }
-            if (list.size() > max.size()) {
-                max.clear();
-                max.addAll(list);
+            if (list.size() > stringMax.size()) {
+                stringMax = (Stack<Character>) list.clone();
             }
-            list.clear();
         }
-        for (Character ch : max) {
-            System.out.print(ch);
-        }
-        System.out.println();
+        stringMax.stream().forEach(System.out::print);
     }
 }
-//Tính toán độ phức tạp của bài toán:
-//1 vòng lặp bên ngoài = n;
-//1 vòng lặp bên trong = n - 1;
-//1 câu lệnh = 1;
-//1 vòng lặp * 1 câu lệnh = 1;
-//T(n) = (n * (n - 1)) + (1 + 1);
-//T(n) = O(n^2) + O(n);
-//T(n) = O(n^2);
-//=> Độ phức tạp bài toán này là O(n^2).
-//Không hiểu luôn á=))
+//2 vòng lặp lồng nhau là n^2
+//một list là n
+//tổng tốn O(n^2) thời gian và O(n) không gian
