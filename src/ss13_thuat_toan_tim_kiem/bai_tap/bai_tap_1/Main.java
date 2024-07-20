@@ -5,15 +5,18 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.print("Nhập chuỗi");
         Scanner sc = new Scanner(System.in);
         String string = sc.nextLine();
         Stack<Character> stringMax = new Stack<>();
         for (int i = 0; i < string.length(); i++) {
+            char c = string.charAt(i);
             Stack<Character> list = new Stack<>();
-            list.add(string.charAt(i));
+            list.add(c);
             for (int j = i + 1; j < string.length(); j++) {
+                char c2 = string.charAt(j);
                 if (string.charAt(j) > list.peek()) {
-                    list.add(string.charAt(j));
+                    list.add(c2);
                 }
             }
             if (list.size() > stringMax.size()) {

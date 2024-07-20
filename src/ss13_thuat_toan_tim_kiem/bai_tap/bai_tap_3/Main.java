@@ -1,17 +1,17 @@
 package ss13_thuat_toan_tim_kiem.bai_tap.bai_tap_3;
 
-import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList<Character> max = new LinkedList<>();
-        Scanner sc = new Scanner(System.in);
         System.out.print("Nhập chuỗi");
+        Scanner sc = new Scanner(System.in);
         String string = sc.nextLine();
+        Stack<Character> stringMax = new Stack<>();
         for (int i = 0; i < string.length(); i++) {
             char c = string.charAt(i);
-            LinkedList<Character> list = new LinkedList<>();
+            Stack<Character> list = new Stack<>();
             list.add(c);
             for (int j = i + 1; j < string.length(); j++) {
                 char c2 = string.charAt(j);
@@ -21,11 +21,11 @@ public class Main {
                     break;
                 }
             }
-            if (list.size() > max.size()) {
-                max = (LinkedList<Character>) list.clone();
+            if (list.size() > stringMax.size()) {
+                stringMax = (Stack<Character>) list.clone();
             }
         }
-        max.stream().forEach(System.out::println);
+        stringMax.stream().forEach(System.out::println);
     }
 }
 //2 vòng lặp lồng nhau là n^2
