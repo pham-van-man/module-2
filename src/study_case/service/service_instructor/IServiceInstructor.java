@@ -16,4 +16,6 @@ public interface IServiceInstructor {
     boolean isEmpty(int id);
 
     int getIndex(int id);
+
+    void updateData();
 }

@@ -4,9 +4,6 @@ import study_case.model.Instructor;
 import study_case.service.service_instructor.ServiceInstructor;
 import study_case.service.service_instructor.IServiceInstructor;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -117,11 +114,6 @@ public class ControllerInstructor {
     }
 
     public static void save() {
-        try {
-            ObjectOutputStream data = new ObjectOutputStream(new FileOutputStream("list_instructor.ser"));
-            data.writeObject(listInstructor);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        serviceInstructor.updateData();
     }
 }

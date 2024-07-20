@@ -16,4 +16,6 @@ public interface IServiceStudent {
     boolean isEmpty(int id);
 
     int getIndex(int id);
+
+    void updateData();
 }

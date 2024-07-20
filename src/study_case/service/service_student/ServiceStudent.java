@@ -38,4 +38,9 @@ public class ServiceStudent implements IServiceStudent {
     public int getIndex(int id) {
         return repoStudent.getIndex(id);
     }
+
+    @Override
+    public void updateData() {
+        repoStudent.updateData();
+    }
 }

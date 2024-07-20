@@ -38,4 +38,9 @@ public class ServiceInstructor implements IServiceInstructor {
     public int getIndex(int id) {
         return repoInstructor.getIndex(id);
     }
+
+    @Override
+    public void updateData() {
+        repoInstructor.updateData();
+    }
 }

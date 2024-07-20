@@ -4,9 +4,6 @@ import study_case.model.Student;
 import study_case.service.service_student.IServiceStudent;
 import study_case.service.service_student.ServiceStudent;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -105,7 +102,7 @@ public class ControllerStudent {
             System.out.println("Nhập địa chỉ");
             String address = sc.nextLine();
             Student students = new Student(id, name, age, phoneNumber, email, address);
-            int index = listStudents.indexOf(id);
+            int index = serviceStudent.getIndex(id);
             serviceStudent.update(index, students);
             System.out.println("Chỉnh sửa thành công");
         }
@@ -116,11 +113,6 @@ public class ControllerStudent {
     }
 
     public static void save() {
-        try {
-            ObjectOutputStream data = new ObjectOutputStream(new FileOutputStream("list_student.ser"));
-            data.writeObject(listStudents);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        serviceStudent.updateData();
     }
 }

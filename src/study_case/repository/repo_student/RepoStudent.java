@@ -2,9 +2,7 @@ package study_case.repository.repo_student;
 
 import study_case.model.Student;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.LinkedList;
 
 public class RepoStudent implements IRepoStudent {
@@ -63,5 +61,15 @@ public class RepoStudent implements IRepoStudent {
             }
         }
         return -1;
+    }
+
+    @Override
+    public void updateData() {
+        try {
+            ObjectOutputStream data = new ObjectOutputStream(new FileOutputStream("list_student.ser"));
+            data.writeObject(listStudents);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
