@@ -25,7 +25,7 @@ public class ViewMain {
                 case 3:
                     System.exit(0);
                 default:
-                    System.out.println("Khônng có lựa chọn này");
+                    System.out.println("Lựa chọn không hợp lệ");
             }
         }
     }

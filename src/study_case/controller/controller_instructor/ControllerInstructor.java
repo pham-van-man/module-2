@@ -41,7 +41,7 @@ public class ControllerInstructor {
                 case 6:
                     return;
                 default:
-                    System.out.println("Không có lựa chọn này");
+                    System.out.println("Lựa chọn không hợp lệ");
             }
         }
     }
@@ -54,22 +54,16 @@ public class ControllerInstructor {
     }
 
     public static void add() {
-        System.out.println("Nhập ID");
-        int id = Integer.parseInt(sc.nextLine());
+        int id = getIntInput("Nhập ID");
         if (isEmpty(id)) {
             System.out.println("ID đã tồn tại");
             return;
         }
-        System.out.println("Nhập tên");
-        String name = sc.nextLine();
-        System.out.println("Nhập tuổi");
-        int age = Integer.parseInt(sc.nextLine());
-        System.out.println("Nhập số điện thoại");
-        String phoneNumber = sc.nextLine();
-        System.out.println("Nhập Email");
-        String email = sc.nextLine();
-        System.out.println("Nhập địa chỉ");
-        String address = sc.nextLine();
+        String name = getStringInput("Nhập tên");
+        int age = getIntInput("Nhập tuổi");
+        String phoneNumber = getStringInput("Nhập số điện thoại");
+        String email = getStringInput("Nhâp Email");
+        String address = getStringInput("Nhập địa chỉ");
         Instructor instructor = new Instructor(id, name, age, phoneNumber, email, address);
         serviceInstructor.add(instructor);
         System.out.println("Thêm mới thành công");
@@ -80,8 +74,7 @@ public class ControllerInstructor {
     }
 
     public static void delete() {
-        System.out.println("Nhập ID cần xóa");
-        int id = Integer.parseInt(sc.nextLine());
+        int id = getIntInput("Nhập ID cần xóa");
         Instructor instructor = serviceInstructor.delete(id);
         if (instructor != null) {
             System.out.println("Xóa thành công");
@@ -91,21 +84,15 @@ public class ControllerInstructor {
     }
 
     public static void edit() {
-        System.out.println("Nhập ID cần chỉnh sửa");
-        int id = Integer.parseInt(sc.nextLine());
+        int id = getIntInput("Nhập ID cần chỉnh sửa");
         if (!isEmpty(id)) {
             System.out.println("Chỉnh sửa thất bại");
         } else {
-            System.out.println("Nhập tên");
-            String name = sc.nextLine();
-            System.out.println("Nhập tuổi");
-            int age = Integer.parseInt(sc.nextLine());
-            System.out.println("Nhập số điện thoại");
-            String phoneNumber = sc.nextLine();
-            System.out.println("Nhập Email");
-            String email = sc.nextLine();
-            System.out.println("Nhập địa chỉ");
-            String address = sc.nextLine();
+            String name = getStringInput("Nhập tên");
+            int age = getIntInput("Nhập tuổi");
+            String phoneNumber = getStringInput("Nhập số điện thoại");
+            String email = getStringInput("Nhâp Email");
+            String address = getStringInput("Nhập địa chỉ");
             Instructor instructor = new Instructor(id, name, age, phoneNumber, email, address);
             int index = serviceInstructor.getIndex(id);
             serviceInstructor.update(index, instructor);
@@ -115,5 +102,31 @@ public class ControllerInstructor {
 
     public static void save() {
         serviceInstructor.updateData();
+    }
+
+    public static int getIntInput(String prompt) {
+        int value = 0;
+        while (true) {
+            try {
+                System.out.println(prompt);
+                value = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Dữ liệu không hợp lệ");
+            }
+        }
+        return value;
+    }
+
+    public static String getStringInput(String prompt) {
+        while (true) {
+            System.out.println(prompt);
+            String value = sc.nextLine().trim();
+            if (!value.isEmpty()) {
+                value = value.replaceAll("\\s+", " ");
+                return value;
+            }
+            System.out.println("Dữ liệu không hợp lệ");
+        }
     }
 }
