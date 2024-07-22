@@ -1,9 +1,11 @@
 package study_case.controller.controller_student;
 
+import study_case.model.Instructor;
 import study_case.model.Student;
 import study_case.service.service_student.IServiceStudent;
 import study_case.service.service_student.ServiceStudent;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -47,9 +49,42 @@ public class ControllerStudent {
     }
 
     public static void display() {
-        for (Student student : listStudents) {
-            System.out.println(student);
+        while (true) {
+            for (Student student : listStudents) {
+                System.out.println(student);
+            }
+            System.out.println("Chọn chức năng \n" +
+                    "1.Sắp xếp theo tên\n" +
+                    "2.Sắp xếp theo ID \n" +
+                    "3.Thoát\n");
+            int choose = Integer.parseInt(sc.nextLine());
+            switch (choose) {
+                case 1:
+                    sortByName();
+                    break;
+                case 2:
+                    sortByID();
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ");
+            }
         }
+    }
+
+    private static void sortByID() {
+        Comparator<Student> comparator = Comparator
+                .comparing(Student::getId)
+                .thenComparing(Student::getName);
+        listStudents.sort(comparator);
+    }
+
+    private static void sortByName() {
+        Comparator<Student> comparator = Comparator
+                .comparing(Student::getName)
+                .thenComparing(Student::getId);
+        listStudents.sort(comparator);
     }
 
     public static void add() {
@@ -122,7 +157,7 @@ public class ControllerStudent {
             System.out.println(prompt);
             String value = sc.nextLine().trim();
             if (!value.isEmpty()) {
-                value = value.replace("\\s+", " ");
+                value = value.replaceAll("\\s+", " ");
                 return value;
             }
             System.out.println("Dữ liệu không hợp lệ");

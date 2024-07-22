@@ -4,6 +4,7 @@ import study_case.model.Instructor;
 import study_case.service.service_instructor.ServiceInstructor;
 import study_case.service.service_instructor.IServiceInstructor;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -48,9 +49,42 @@ public class ControllerInstructor {
 
 
     public static void display() {
-        for (Instructor instructor : listInstructor) {
-            System.out.println(instructor);
+        while (true) {
+            for (Instructor instructor : listInstructor) {
+                System.out.println(instructor);
+            }
+            System.out.println("Chọn chức năng \n" +
+                    "1.Sắp xếp theo tên\n" +
+                    "2.Sắp xếp theo ID \n" +
+                    "3.Thoát\n");
+            int choose = Integer.parseInt(sc.nextLine());
+            switch (choose) {
+                case 1:
+                    sortByName();
+                    break;
+                case 2:
+                    sortByID();
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ");
+            }
         }
+    }
+
+    private static void sortByID() {
+        Comparator<Instructor> comparator = Comparator
+                .comparing(Instructor::getId)
+                .thenComparing(Instructor::getName);
+        listInstructor.sort(comparator);
+    }
+
+    private static void sortByName() {
+        Comparator<Instructor> comparator = Comparator
+                .comparing(Instructor::getName)
+                .thenComparing(Instructor::getId);
+        listInstructor.sort(comparator);
     }
 
     public static void add() {
@@ -105,7 +139,7 @@ public class ControllerInstructor {
     }
 
     public static int getIntInput(String prompt) {
-        int value = 0;
+        int value;
         while (true) {
             try {
                 System.out.println(prompt);
@@ -129,4 +163,5 @@ public class ControllerInstructor {
             System.out.println("Dữ liệu không hợp lệ");
         }
     }
+
 }

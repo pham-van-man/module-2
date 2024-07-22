@@ -94,7 +94,7 @@ public class ProductManager {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Lựa chọn thất bại");
+                    System.out.println("Lựa chọn Không hợp lệ");
                     break;
             }
         } while (true);
