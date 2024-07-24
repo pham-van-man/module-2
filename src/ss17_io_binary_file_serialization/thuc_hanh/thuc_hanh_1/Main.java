@@ -34,6 +34,6 @@ public class Main {
         File destFile = new File(destPath);
         copyFileUsingJava7Files(sourceFile, destFile);
         copyFileUsingStream(sourceFile, destFile);
-        System.out.println("Copy completed");
+        System.out.println("Sao chép thành công");
     }
 }
