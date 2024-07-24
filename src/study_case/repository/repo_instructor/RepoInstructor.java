@@ -5,12 +5,11 @@ import study_case.model.Instructor;
 import java.io.*;
 import java.util.LinkedList;
 
-public class RepoInstructor implements IRepoInstructor{
+public class RepoInstructor implements IRepoInstructor {
     private static LinkedList<Instructor> listInstructor;
 
     static {
-        try {
-            ObjectInputStream data = new ObjectInputStream(new FileInputStream("list_instructor.ser"));
+        try (ObjectInputStream data = new ObjectInputStream(new FileInputStream("list_instructor.ser"))) {
             listInstructor = (LinkedList<Instructor>) data.readObject();
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -65,8 +64,7 @@ public class RepoInstructor implements IRepoInstructor{
 
     @Override
     public void updateData() {
-        try {
-            ObjectOutputStream data = new ObjectOutputStream(new FileOutputStream("list_instructor.ser"));
+        try (ObjectOutputStream data = new ObjectOutputStream(new FileOutputStream("list_instructor.ser"))) {
             data.writeObject(listInstructor);
         } catch (IOException e) {
             throw new RuntimeException(e);

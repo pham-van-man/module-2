@@ -8,22 +8,13 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        BufferedReader br = null;
-        try {
+        try (BufferedReader br = new BufferedReader(new FileReader("countries.csv"))) {
             String line;
-            br = new BufferedReader(new FileReader("countries.csv"));
             while ((line = br.readLine()) != null) {
                 printCountry(parseCsvLine(line));
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (br != null)
-                    br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 

@@ -8,7 +8,7 @@ public class Main {
         int[] intArray = new int[10];
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < intArray.length; i++) {
-            intArray[i] = Integer.parseInt(sc.nextLine());
+            intArray[i] = (int) ((Math.random() * 100) + 1);
         }
 //        Arrays.sort(intArray);
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();

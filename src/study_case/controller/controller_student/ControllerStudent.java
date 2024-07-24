@@ -1,6 +1,5 @@
 package study_case.controller.controller_student;
 
-import study_case.model.Instructor;
 import study_case.model.Student;
 import study_case.service.service_student.IServiceStudent;
 import study_case.service.service_student.ServiceStudent;
@@ -22,7 +21,8 @@ public class ControllerStudent {
                     "3.Chỉnh sửa\n" +
                     "4.Xóa\n" +
                     "5.Lưu\n" +
-                    "6.Thoát\n");
+                    "6.Tìm kiếm\n" +
+                    "7.Thoát\n");
             int choose = Integer.parseInt(sc.nextLine());
             switch (choose) {
                 case 1:
@@ -41,6 +41,9 @@ public class ControllerStudent {
                     save();
                     break;
                 case 6:
+                    search();
+                    break;
+                case 7:
                     return;
                 default:
                     System.out.println("Lựa chọn không hợp lệ");
@@ -77,14 +80,14 @@ public class ControllerStudent {
         Comparator<Student> comparator = Comparator
                 .comparing(Student::getId)
                 .thenComparing(Student::getName);
-        listStudents.sort(comparator);
+        serviceStudent.findAll().sort(comparator);
     }
 
     private static void sortByName() {
         Comparator<Student> comparator = Comparator
                 .comparing(Student::getName)
                 .thenComparing(Student::getId);
-        listStudents.sort(comparator);
+        serviceStudent.findAll().sort(comparator);
     }
 
     public static void add() {
@@ -161,6 +164,16 @@ public class ControllerStudent {
                 return value;
             }
             System.out.println("Dữ liệu không hợp lệ");
+        }
+    }
+
+    public static void search() {
+        System.out.println("Tìm kiếm");
+        String search = sc.nextLine();
+        for (Student student : serviceStudent.findAll()) {
+            if (student.getName().toLowerCase().contains(search.toLowerCase())) {
+                System.out.println(student);
+            }
         }
     }
 }

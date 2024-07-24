@@ -9,8 +9,7 @@ public class RepoStudent implements IRepoStudent {
     private static LinkedList<Student> listStudents;
 
     static {
-        try {
-            ObjectInputStream data = new ObjectInputStream(new FileInputStream("list_student.ser"));
+        try (ObjectInputStream data = new ObjectInputStream(new FileInputStream("list_student.ser"))) {
             listStudents = (LinkedList<Student>) data.readObject();
         } catch (ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
@@ -65,8 +64,7 @@ public class RepoStudent implements IRepoStudent {
 
     @Override
     public void updateData() {
-        try {
-            ObjectOutputStream data = new ObjectOutputStream(new FileOutputStream("list_student.ser"));
+        try (ObjectOutputStream data = new ObjectOutputStream(new FileOutputStream("list_student.ser"))) {
             data.writeObject(listStudents);
         } catch (IOException e) {
             throw new RuntimeException(e);

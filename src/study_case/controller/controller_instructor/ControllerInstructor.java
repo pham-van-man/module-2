@@ -21,7 +21,8 @@ public class ControllerInstructor {
                     "3.Chỉnh sửa\n" +
                     "4.Xóa\n" +
                     "5.Lưu\n" +
-                    "6.Thoát\n");
+                    "6.Tìm kiếm\n" +
+                    "7.Thoát\n");
             int choose = Integer.parseInt(sc.nextLine());
             switch (choose) {
                 case 1:
@@ -40,6 +41,9 @@ public class ControllerInstructor {
                     save();
                     break;
                 case 6:
+                    search();
+                    break;
+                case 7:
                     return;
                 default:
                     System.out.println("Lựa chọn không hợp lệ");
@@ -77,14 +81,14 @@ public class ControllerInstructor {
         Comparator<Instructor> comparator = Comparator
                 .comparing(Instructor::getId)
                 .thenComparing(Instructor::getName);
-        listInstructor.sort(comparator);
+        serviceInstructor.findAll().sort(comparator);
     }
 
     private static void sortByName() {
         Comparator<Instructor> comparator = Comparator
                 .comparing(Instructor::getName)
                 .thenComparing(Instructor::getId);
-        listInstructor.sort(comparator);
+        serviceInstructor.findAll().sort(comparator);
     }
 
     public static void add() {
@@ -164,4 +168,13 @@ public class ControllerInstructor {
         }
     }
 
+    public static void search() {
+        System.out.println("Tìm kiếm");
+        String search = sc.nextLine();
+        for (Instructor instructor : serviceInstructor.findAll()) {
+            if (instructor.getName().toLowerCase().contains(search.toLowerCase())) {
+                System.out.println(instructor);
+            }
+        }
+    }
 }

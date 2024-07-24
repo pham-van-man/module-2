@@ -9,7 +9,13 @@ public class ProductManager {
     private static int id;
     static Scanner scanner = new Scanner(System.in);
 
-    public void add() {
+    static {
+        Product product = new Product();
+        product.setId(1);
+        listProduct.add(product);
+    }
+
+    public static void add() {
         System.out.println("Nhập tên sản phẩm");
         String name = scanner.nextLine();
         System.out.println("Nhập giá sản phẩm");
@@ -53,12 +59,12 @@ public class ProductManager {
     }
 
     public void search() {
-        System.out.println("Nhập ID cần tìm");
-        int id = Integer.parseInt(scanner.nextLine());
-        if (id < 0 || id > listProduct.size() - 1) {
-            System.out.println("Tìm kiếm thất bại");
-        } else {
-            System.out.println(listProduct.get(id));
+        System.out.println("Tìm kiếm");
+        String search = scanner.nextLine();
+        for (Product product : listProduct) {
+            if (product.getName().toLowerCase().contains(search.toLowerCase())) {
+                System.out.println(product);
+            }
         }
     }
 
