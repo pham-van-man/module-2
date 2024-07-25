@@ -2,6 +2,7 @@ package bai_tap_lam_them.controller;
 
 import bai_tap_lam_them.model.hang_san_xuat.HangSanXuat;
 import bai_tap_lam_them.model.phuong_tien.XeOto;
+import bai_tap_lam_them.repository.repo_xe_oto.IRepoXeOto;
 import bai_tap_lam_them.service.service_hang_san_xuat.IServiceHangSanXuat;
 import bai_tap_lam_them.service.service_hang_san_xuat.ServiceHangSanXuat;
 import bai_tap_lam_them.service.service_xe_Oto.IServiceXeOto;

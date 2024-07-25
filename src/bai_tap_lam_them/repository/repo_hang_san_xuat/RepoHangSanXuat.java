@@ -22,8 +22,7 @@ public class RepoHangSanXuat implements IRepoHangSanXuat {
     public static void save() {
         try (BufferedWriter ghiTep = new BufferedWriter(new FileWriter("danhSachHangSanXuat.txt"))) {
             for (HangSanXuat hangSanXuats : danhSachHangSanXuatXe) {
-                ghiTep.write(hangSanXuats.ghiHangSanXuat());
-                ghiTep.newLine();
+                ghiTep.write(hangSanXuats.ghiHangSanXuat() + System.lineSeparator());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

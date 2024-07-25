@@ -7,7 +7,7 @@ import bai_tap_lam_them.repository.repo_xe_oto.RepoXeOto;
 import java.util.LinkedList;
 
 public class ServiceXeOto implements IServiceXeOto {
-    private IRepoXeOto repoXeOto = new RepoXeOto();
+    public IRepoXeOto repoXeOto = new RepoXeOto();
 
     @Override
     public LinkedList<XeOto> findALL() {
