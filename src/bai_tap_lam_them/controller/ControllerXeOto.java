@@ -76,4 +76,15 @@ public class ControllerXeOto {
         XeOto newCar = new XeOto(bienSoXe, hangSanXuat, namSanXuat, chuSoHuu, seatingCapacity, carModel);
         serviceXeOto.findALL().add(newCar);
     }
+
+    public static boolean search(String inputSearch) {
+        boolean flag = false;
+        for (XeOto xeOto : serviceXeOto.findALL()) {
+            if (xeOto.getBienSoXe().toLowerCase().contains(inputSearch.toLowerCase())) {
+                System.out.println(xeOto);
+                flag = true;
+            }
+        }
+        return flag;
+    }
 }

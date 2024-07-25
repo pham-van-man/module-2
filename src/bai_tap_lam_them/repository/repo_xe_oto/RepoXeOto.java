@@ -15,9 +15,9 @@ public class RepoXeOto implements IRepoXeOto {
     static String[] kieuXe = {"Du lich", "Xe khach"};
 
     static {
-        danhSachOto.add(new XeOto("123123", danhSachHangSanXuat.get(1), "2020", "Pham Van Man", 5, kieuXe[0]));
-        danhSachOto.add(new XeOto("456456", danhSachHangSanXuat.get(2), "2020", "Pham Van Man", 5, kieuXe[0]));
-        danhSachOto.add(new XeOto("789789", danhSachHangSanXuat.get(3), "2020", "Pham Van Man", 5, kieuXe[0]));
+        danhSachOto.add(new XeOto("123123", danhSachHangSanXuat.get(0), "2020", "Pham Van Man", 5, kieuXe[0]));
+        danhSachOto.add(new XeOto("456456", danhSachHangSanXuat.get(1), "2020", "Pham Van Man", 5, kieuXe[0]));
+        danhSachOto.add(new XeOto("789789", danhSachHangSanXuat.get(2), "2020", "Pham Van Man", 5, kieuXe[0]));
     }
 
     @Override

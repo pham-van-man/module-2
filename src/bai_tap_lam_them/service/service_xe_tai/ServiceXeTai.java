@@ -7,10 +7,10 @@ import bai_tap_lam_them.repository.repo_xe_tai.RepoXeTai;
 import java.util.LinkedList;
 
 public class ServiceXeTai implements IServiceXeTai {
-    private IRepoXeTai repoXeTai = new RepoXeTai();
+    private static IRepoXeTai repoXeTai = new RepoXeTai();
 
     @Override
-    public LinkedList<XeTai> findALL() {
+   public LinkedList<XeTai> findALL() {
         return repoXeTai.findALL();
     }
 }

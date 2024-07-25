@@ -74,4 +74,15 @@ public class ControllerXeMay {
         XeMay newMotorcycle = new XeMay(bienSoXe, hangSanXuat, namSanXuat, chuSoHuu, horsepower);
         serviceXeMay.findALL().add(newMotorcycle);
     }
+
+    public static boolean search(String inputSearch) {
+        boolean flag = false;
+        for (XeMay xeMay : serviceXeMay.findALL()) {
+            if (xeMay.getBienSoXe().toLowerCase().contains(inputSearch.toLowerCase())) {
+                System.out.println(xeMay);
+                flag = true;
+            }
+        }
+        return flag;
+    }
 }

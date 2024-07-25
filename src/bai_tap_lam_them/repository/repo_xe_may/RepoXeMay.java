@@ -14,9 +14,9 @@ public class RepoXeMay implements IRepoXeMay {
     private static ArrayList<HangSanXuat> danhSachHangSanXuat = repoHangSanXuat.findALL();
 
     static {
-        danhSachXeMay.add(new XeMay("123123", danhSachHangSanXuat.get(1), "2020", "Pham Van Man", "150cc"));
-        danhSachXeMay.add(new XeMay("456456", danhSachHangSanXuat.get(2), "2020", "Pham Van Man", "150cc"));
-        danhSachXeMay.add(new XeMay("789789", danhSachHangSanXuat.get(3), "2020", "Pham Van Man", "150cc"));
+        danhSachXeMay.add(new XeMay("123123", danhSachHangSanXuat.get(0), "2020", "Pham Van Man", "150cc"));
+        danhSachXeMay.add(new XeMay("456456", danhSachHangSanXuat.get(1), "2020", "Pham Van Man", "150cc"));
+        danhSachXeMay.add(new XeMay("789789", danhSachHangSanXuat.get(2), "2020", "Pham Van Man", "150cc"));
     }
 
     public LinkedList<XeMay> findALL() {

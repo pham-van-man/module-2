@@ -14,9 +14,9 @@ public class RepoXeTai implements IRepoXeTai {
     private static ArrayList<HangSanXuat> danhSachHangSanXuat = repoHangSanXuat.findALL();
 
     static {
-        danhSachXeTai.add(new XeTai("123123", danhSachHangSanXuat.get(1), "2020", "Pham Van Man", "5 tấn"));
-        danhSachXeTai.add(new XeTai("456456", danhSachHangSanXuat.get(2), "2020", "Pham Van Man", "5 tấn"));
-        danhSachXeTai.add(new XeTai("789789", danhSachHangSanXuat.get(3), "2020", "Pham Van Man", "5 tấn"));
+        danhSachXeTai.add(new XeTai("123123", danhSachHangSanXuat.get(0), "2020", "Pham Van Man", "5 tấn"));
+        danhSachXeTai.add(new XeTai("456456", danhSachHangSanXuat.get(1), "2020", "Pham Van Man", "5 tấn"));
+        danhSachXeTai.add(new XeTai("789789", danhSachHangSanXuat.get(2), "2020", "Pham Van Man", "5 tấn"));
     }
 
     @Override

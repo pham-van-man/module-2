@@ -7,7 +7,7 @@ import bai_tap_lam_them.controller.ControllerXeTai;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         do {
@@ -55,28 +55,23 @@ public class Main {
                     break;
                 case 4:
                     return;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ");
             }
         } while (true);
     }
 
     private static void search() {
-        do {
-            System.out.println("1. Tìm xe tải \n" +
-                    "2. Tìm xe máy \n" +
-                    "3. Tìm xe Oto \n" +
-                    "4. Thoát");
-            int choice = Integer.parseInt(sc.nextLine());
-            switch (choice) {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    return;
-            }
-        } while (true);
+        System.out.println("Tìm kiếm");
+        String inputSearch = sc.nextLine();
+        boolean flag1 = ControllerXeOto.search(inputSearch);
+        System.out.println();
+        boolean flag2 = ControllerXeMay.search(inputSearch);
+        System.out.println();
+        boolean flag3 = ControllerXeTai.search(inputSearch);
+        if (!flag1 && !flag2 && !flag3) {
+            System.out.println("Không tìm thấy");
+        }
     }
 
     private static void delete() {

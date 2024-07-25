@@ -74,4 +74,15 @@ public class ControllerXeTai {
         XeTai newTruck = new XeTai(bienSoXe, hangSanXuat, namSanXuat, chuSoHuu, payload);
         iServiceXeTai.findALL().add(newTruck);
     }
+
+    public static boolean search(String inputSearch) {
+        boolean flag = false;
+        for (XeTai xeTai : iServiceXeTai.findALL()) {
+            if (xeTai.getBienSoXe().toLowerCase().contains(inputSearch.toLowerCase())) {
+                System.out.println(xeTai);
+                flag = true;
+            }
+        }
+        return flag;
+    }
 }
