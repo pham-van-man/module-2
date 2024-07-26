@@ -9,7 +9,11 @@ public class Main {
         double a = Double.parseDouble(sc.nextLine());
         double b = Double.parseDouble(sc.nextLine());
         double c = Double.parseDouble(sc.nextLine());
-        check(a, b, c);
+        try {
+            check(a, b, c);
+        } catch (IllegalTriangleException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void check(double a, double b, double c) {
