@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập đường dẫn nguồn");
         String inPut = sc.nextLine();
@@ -27,6 +27,8 @@ public class Main {
                 characterCount++;
             }
             System.out.println("Sao chép thành công " + characterCount + " Kí tự");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

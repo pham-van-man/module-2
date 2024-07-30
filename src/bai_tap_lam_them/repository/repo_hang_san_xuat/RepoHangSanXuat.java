@@ -6,13 +6,13 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class RepoHangSanXuat implements IRepoHangSanXuat {
-    private static ArrayList<HangSanXuat> danhSachHangSanXuatXe = new ArrayList<>();
+    private static ArrayList<HangSanXuat> danhSachHangSanXuat = new ArrayList<>();
 
     static {
         try (BufferedReader docTep = new BufferedReader(new FileReader("danhSachHangSanXuat.txt"))) {
             String line;
             while ((line = docTep.readLine()) != null) {
-                danhSachHangSanXuatXe.add(HangSanXuat.taoHangSanXuat(line));
+                danhSachHangSanXuat.add(HangSanXuat.taoHangSanXuat(line));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -21,7 +21,7 @@ public class RepoHangSanXuat implements IRepoHangSanXuat {
 
     public static void save() {
         try (BufferedWriter ghiTep = new BufferedWriter(new FileWriter("danhSachHangSanXuat.txt"))) {
-            for (HangSanXuat hangSanXuats : danhSachHangSanXuatXe) {
+            for (HangSanXuat hangSanXuats : danhSachHangSanXuat) {
                 ghiTep.write(hangSanXuats.ghiHangSanXuat() + System.lineSeparator());
             }
         } catch (IOException e) {
@@ -31,6 +31,6 @@ public class RepoHangSanXuat implements IRepoHangSanXuat {
 
     @Override
     public ArrayList<HangSanXuat> findALL() {
-        return danhSachHangSanXuatXe;
+        return danhSachHangSanXuat;
     }
 }

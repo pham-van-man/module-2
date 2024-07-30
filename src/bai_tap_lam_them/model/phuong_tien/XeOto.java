@@ -9,8 +9,8 @@ public class XeOto extends PhuongTien {
     public XeOto() {
     }
 
-    public XeOto(String bienSoXe, HangSanXuat hangSanXuat, String namSanXuat, String chuSoHuu, int soChoNgoi, String kieuXe) {
-        super(bienSoXe, hangSanXuat, namSanXuat, chuSoHuu);
+    public XeOto(String bienSo, HangSanXuat hangSanXuat, String namSanXuat, String chuSoHuu, int soChoNgoi, String kieuXe) {
+        super(bienSo, hangSanXuat, namSanXuat, chuSoHuu);
         this.soChoNgoi = soChoNgoi;
         this.kieuXe = kieuXe;
     }

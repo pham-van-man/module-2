@@ -14,7 +14,8 @@ public class Main {
     }
 
     private static void copyFileUsingStream(File source, File dest) {
-        try (FileInputStream fileInput = new FileInputStream(source); FileOutputStream fileOutput = new FileOutputStream(dest)) {
+        try (FileInputStream fileInput = new FileInputStream(source);
+             FileOutputStream fileOutput = new FileOutputStream(dest)) {
             byte[] buffer = new byte[1024];
             int length;
             while ((length = fileInput.read(buffer)) > 0) {

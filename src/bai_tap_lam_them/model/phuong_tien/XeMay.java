@@ -8,8 +8,8 @@ public class XeMay extends PhuongTien {
     public XeMay() {
     }
 
-    public XeMay(String bienSoXe, HangSanXuat hangSanXuat, String namSanXuat, String chuSoHuu, String congXuat) {
-        super(bienSoXe, hangSanXuat, namSanXuat, chuSoHuu);
+    public XeMay(String bienSo, HangSanXuat hangSanXuat, String namSanXuat, String chuSoHuu, String congXuat) {
+        super(bienSo, hangSanXuat, namSanXuat, chuSoHuu);
         this.congXuat = congXuat;
     }
 

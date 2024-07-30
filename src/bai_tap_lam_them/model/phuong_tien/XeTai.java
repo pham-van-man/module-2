@@ -8,8 +8,8 @@ public class XeTai extends PhuongTien {
     public XeTai() {
     }
 
-    public XeTai(String bienSoXe, HangSanXuat hangSanXuat, String namSanXuat, String chuSoHuu, String trongTai) {
-        super(bienSoXe, hangSanXuat, namSanXuat, chuSoHuu);
+    public XeTai(String bienSo, HangSanXuat hangSanXuat, String namSanXuat, String chuSoHuu, String trongTai) {
+        super(bienSo, hangSanXuat, namSanXuat, chuSoHuu);
         this.trongTai = trongTai;
     }
 

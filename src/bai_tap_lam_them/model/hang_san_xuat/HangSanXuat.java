@@ -1,33 +1,33 @@
 package bai_tap_lam_them.model.hang_san_xuat;
 
 public class HangSanXuat {
-    private String maSanXuat;
-    private String tenHangSanXuat;
+    private String ma;
+    private String ten;
     private String quocGia;
 
     public HangSanXuat() {
     }
 
-    public HangSanXuat(String maSanXuat, String tenHangSanXuat, String quocGia) {
-        this.maSanXuat = maSanXuat;
-        this.tenHangSanXuat = tenHangSanXuat;
+    public HangSanXuat(String ma, String ten, String quocGia) {
+        this.ma = ma;
+        this.ten = ten;
         this.quocGia = quocGia;
     }
 
-    public String getMaSanXuat() {
-        return maSanXuat;
+    public String getMa() {
+        return ma;
     }
 
-    public void setMaSanXuat(String maSanXuat) {
-        this.maSanXuat = maSanXuat;
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
-    public String getTenHangSanXuat() {
-        return tenHangSanXuat;
+    public String getTen() {
+        return ten;
     }
 
-    public void setTenHangSanXuat(String tenHangSanXuat) {
-        this.tenHangSanXuat = tenHangSanXuat;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public String getQuocGia() {
@@ -41,8 +41,8 @@ public class HangSanXuat {
     @Override
     public String toString() {
         return "HangSanXuat{" +
-                "maSanXuat='" + maSanXuat + '\'' +
-                ", tenHangSanXuat='" + tenHangSanXuat + '\'' +
+                "maSanXuat='" + ma + '\'' +
+                ", tenHangSanXuat='" + ten + '\'' +
                 ", quocGia='" + quocGia + '\'' +
                 '}';
     }
@@ -53,6 +53,6 @@ public class HangSanXuat {
     }
 
     public String ghiHangSanXuat() {
-        return maSanXuat + ',' + tenHangSanXuat + ',' + quocGia;
+        return ma + ',' + ten + ',' + quocGia;
     }
 }

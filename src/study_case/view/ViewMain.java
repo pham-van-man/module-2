@@ -1,12 +1,10 @@
 package study_case.view;
 
-import study_case.controller.controller_instructor.ControllerInstructor;
-import study_case.controller.controller_student.ControllerStudent;
-
-import java.util.Scanner;
+import study_case.controller.ControllerInstructor;
+import study_case.controller.ControllerStudent;
+import study_case.util.Validate;
 
 public class ViewMain {
-    private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         while (true) {
@@ -14,7 +12,7 @@ public class ViewMain {
                     "1.Student\n" +
                     "2.Teacher \n" +
                     "3.Thoát\n");
-            int choose = Integer.parseInt(sc.nextLine());
+            int choose = Validate.getIntInput("Nhập lựa chọn");
             switch (choose) {
                 case 1:
                     ControllerStudent.studentMenu();

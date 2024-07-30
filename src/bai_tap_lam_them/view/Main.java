@@ -45,13 +45,13 @@ public class Main {
             int choice = Integer.parseInt(sc.nextLine());
             switch (choice) {
                 case 1:
-                    ControllerXeTai.hienThi();
+                    ControllerXeTai.display();
                     break;
                 case 2:
-                    ControllerXeOto.hienThi();
+                    ControllerXeOto.display();
                     break;
                 case 3:
-                    ControllerXeMay.hienThi();
+                    ControllerXeMay.display();
                     break;
                 case 4:
                     return;
@@ -66,7 +66,7 @@ public class Main {
         String inputSearch = sc.nextLine();
         boolean flag1 = ControllerXeOto.search(inputSearch);
         System.out.println();
-        boolean flag2 = ControllerXeMay.search(inputSearch);
+        boolean flag2 = ControllerXeMay.sreach(inputSearch);
         System.out.println();
         boolean flag3 = ControllerXeTai.search(inputSearch);
         if (!flag1 && !flag2 && !flag3) {

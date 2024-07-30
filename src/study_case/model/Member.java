@@ -12,7 +12,6 @@ public abstract class Member implements Serializable {
     private String email;
     private String address;
 
-
     public Member() {
     }
 
@@ -122,5 +121,9 @@ public abstract class Member implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, phoneNumber, email);
+    }
+
+    public String getContent() {
+        return id + "," + name + "," + age + "," + phoneNumber + "," + email + "," + address;
     }
 }

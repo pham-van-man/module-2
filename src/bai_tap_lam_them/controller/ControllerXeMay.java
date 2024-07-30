@@ -12,13 +12,13 @@ import java.util.Scanner;
 public class ControllerXeMay {
     private static IServiceXeMay serviceXeMay = new ServiceXeMay();
     private static Scanner sc = new Scanner(System.in);
-    private static String bienSoXe;
+    private static String bienSo;
     private static HangSanXuat hangSanXuat;
     private static String namSanXuat;
     private static String chuSoHuu;
     private static IServiceHangSanXuat serviceHangSanXuat = new ServiceHangSanXuat();
 
-    public static void hienThi() {
+    public static void display() {
         for (XeMay xeMay : serviceXeMay.findALL()) {
             System.out.println(xeMay);
         }
@@ -26,7 +26,7 @@ public class ControllerXeMay {
 
     public static void add() {
         System.out.println("Nhập biển số xe");
-        bienSoXe = sc.nextLine();
+        bienSo = sc.nextLine();
         boolean flag = true;
         do {
             System.out.println("Chọn hãng sản xuất");
@@ -38,7 +38,7 @@ public class ControllerXeMay {
             switch (choice) {
                 case 1:
                     for (HangSanXuat hangSanXuatXe : serviceHangSanXuat.findALL()) {
-                        if (hangSanXuatXe.getTenHangSanXuat().equals("Yamaha")) {
+                        if (hangSanXuatXe.getTen().equals("Yamaha")) {
                             hangSanXuat = hangSanXuatXe;
                         }
                     }
@@ -46,7 +46,7 @@ public class ControllerXeMay {
                     break;
                 case 2:
                     for (HangSanXuat hangSanXuatXe : serviceHangSanXuat.findALL()) {
-                        if (hangSanXuatXe.getTenHangSanXuat().equals("Honda")) {
+                        if (hangSanXuatXe.getTen().equals("Honda")) {
                             hangSanXuat = hangSanXuatXe;
                         }
                     }
@@ -54,7 +54,7 @@ public class ControllerXeMay {
                     break;
                 case 3:
                     for (HangSanXuat hangSanXuatXe : serviceHangSanXuat.findALL()) {
-                        if (hangSanXuatXe.getTenHangSanXuat().equals("Suzuki")) {
+                        if (hangSanXuatXe.getTen().equals("Suzuki")) {
                             hangSanXuat = hangSanXuatXe;
                         }
                     }
@@ -71,14 +71,14 @@ public class ControllerXeMay {
         chuSoHuu = sc.nextLine();
         System.out.println("Nhập công suất");
         String horsepower = sc.nextLine();
-        XeMay newMotorcycle = new XeMay(bienSoXe, hangSanXuat, namSanXuat, chuSoHuu, horsepower);
+        XeMay newMotorcycle = new XeMay(bienSo, hangSanXuat, namSanXuat, chuSoHuu, horsepower);
         serviceXeMay.findALL().add(newMotorcycle);
     }
 
-    public static boolean search(String inputSearch) {
+    public static boolean sreach(String inputSearch) {
         boolean flag = false;
         for (XeMay xeMay : serviceXeMay.findALL()) {
-            if (xeMay.getBienSoXe().toLowerCase().contains(inputSearch.toLowerCase())) {
+            if (xeMay.getBienSo().toLowerCase().contains(inputSearch.toLowerCase())) {
                 System.out.println(xeMay);
                 flag = true;
             }
