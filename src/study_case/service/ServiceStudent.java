@@ -1,12 +1,14 @@
 package study_case.service;
 
 import study_case.model.Student;
+import study_case.repository.IRepoStudent;
 import study_case.repository.RepoStudent;
+import study_case.util.DataHandler;
 
 import java.util.LinkedList;
 
-public class ServiceStudent implements InterfaceService<Student> {
-    private static RepoStudent repo = new RepoStudent();
+public class ServiceStudent implements IServiceStudent {
+    private static IRepoStudent repo = new RepoStudent(new DataHandler());
 
     @Override
     public LinkedList<Student> findAll() {

@@ -3,6 +3,8 @@ package test;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TestIO {
     public static void main(String[] args) {
@@ -82,5 +84,9 @@ public class TestIO {
 //    }
 //        String s ="\"";
 //        System.out.println(s);
+//        String s= "^\\+84-\\d{9}$";
+//        Pattern p = Pattern.compile(s);
+//        Matcher m = p.matcher("+84-891234567");
+//        System.out.println(m.matches());
     }
 }

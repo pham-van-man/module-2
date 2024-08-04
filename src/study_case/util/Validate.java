@@ -8,7 +8,7 @@ public class Validate {
     private static final Scanner sc = new Scanner(System.in);
 
     public static int getIntInput(String prompt) {
-        int value = 0;
+        int value;
         while (true) {
             try {
                 System.out.println(prompt);
@@ -55,7 +55,7 @@ public class Validate {
             String value = sc.nextLine().trim();
             if (!value.isEmpty()) {
                 value = value.replaceAll("\\s+", "");
-                Pattern pattern = Pattern.compile("^[0-9]{10}$");
+                Pattern pattern = Pattern.compile("^0[0-9]{9}$");
                 Matcher matcher = pattern.matcher(value);
                 if (matcher.matches()) {
                     return value;
@@ -63,5 +63,23 @@ public class Validate {
             }
             System.out.println("Dữ liệu không hợp lệ");
         }
+    }
+
+    public static int getAgeInput(String prompt) {
+        int value;
+        while (true) {
+            try {
+                System.out.println(prompt);
+                value = Integer.parseInt(sc.nextLine());
+                if (value < 0) {
+                    System.out.println("Dữ liệu không hợp lệ");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Dữ liệu không hợp lệ");
+            }
+        }
+        return value;
     }
 }

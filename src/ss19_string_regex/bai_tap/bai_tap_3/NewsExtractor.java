@@ -16,7 +16,7 @@ public class NewsExtractor {
             String content = scanner.next();
             scanner.close();
             content = content.replaceAll("\\s+", " ");
-            Pattern p = Pattern.compile("<a[^>]*class=\"dt-text-black-mine\"[^>]*>(.+?)</a>");
+            Pattern p = Pattern.compile("<a[^>]*    class=\"dt-text-black-mine\"[^>]*>(.+?)</a>");
             Matcher m = p.matcher(content);
             while (m.find()) {
                 System.out.println(m.group(1).trim());

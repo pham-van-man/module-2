@@ -1,11 +1,12 @@
 package study_case.controller;
 
 import study_case.model.Instructor;
+import study_case.service.IServiceInstructor;
 import study_case.service.ServiceInstructor;
 import study_case.util.Validate;
 
 public class ControllerInstructor {
-    private static ServiceInstructor service = new ServiceInstructor();
+    private static IServiceInstructor service = new ServiceInstructor();
 
     public static void teacherMenu() {
         while (true) {
@@ -82,7 +83,7 @@ public class ControllerInstructor {
             return;
         }
         String name = Validate.getStringInput("Nhập tên");
-        int age = Validate.getIntInput("Nhập tuổi");
+        int age = Validate.getAgeInput("Nhập tuổi");
         String phoneNumber = Validate.getPhoneNumberInput("Nhập số điện thoại");
         String email = Validate.getEmailInput("Nhâp Email");
         String address = Validate.getStringInput("Nhập địa chỉ");
@@ -111,7 +112,7 @@ public class ControllerInstructor {
             System.out.println("Không tìm thấy");
         } else {
             String name = Validate.getStringInput("Nhập tên");
-            int age = Validate.getIntInput("Nhập tuổi");
+            int age = Validate.getAgeInput("Nhập tuổi");
             String phoneNumber = Validate.getPhoneNumberInput("Nhập số điện thoại");
             String email = Validate.getEmailInput("Nhâp Email");
             String address = Validate.getStringInput("Nhập địa chỉ");

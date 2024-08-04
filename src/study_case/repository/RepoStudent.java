@@ -1,17 +1,22 @@
 package study_case.repository;
 
 import study_case.model.Student;
-import study_case.util.Data;
+import study_case.util.IDataHandler;
 
 import java.util.Comparator;
 import java.util.LinkedList;
 
-public class RepoStudent implements InterfaceRepo<Student> {
+public class RepoStudent implements IRepoStudent {
     private static final String PATH = "src/study_case/data/student.ser";
+    private IDataHandler dataHandler;
+
+    public RepoStudent(IDataHandler dataHandler) {
+        this.dataHandler = dataHandler;
+    }
 
     @Override
     public LinkedList<Student> findAll() {
-        LinkedList<Student> list = Data.readerObject(PATH);
+        LinkedList<Student> list = dataHandler.readerObject(PATH);
         return list;
     }
 
@@ -19,7 +24,7 @@ public class RepoStudent implements InterfaceRepo<Student> {
     public void save(Student student) {
         LinkedList<Student> list = findAll();
         list.add(student);
-        Data.writerObject(list, PATH);
+        dataHandler.writerObject(list, PATH);
     }
 
     @Override
@@ -28,7 +33,7 @@ public class RepoStudent implements InterfaceRepo<Student> {
         for (Student student : list) {
             if (student.getId() == id) {
                 list.remove(student);
-                Data.writerObject(list, PATH);
+                dataHandler.writerObject(list, PATH);
                 return student;
             }
         }
@@ -39,7 +44,7 @@ public class RepoStudent implements InterfaceRepo<Student> {
     public void update(int index, Student student) {
         LinkedList<Student> list = findAll();
         list.set(index, student);
-        Data.writerObject(list, PATH);
+        dataHandler.writerObject(list, PATH);
     }
 
     @Override
@@ -71,7 +76,7 @@ public class RepoStudent implements InterfaceRepo<Student> {
                 .thenComparing(Student::getName);
         LinkedList<Student> list = findAll();
         list.sort(comparator);
-        Data.writerObject(list, PATH);
+        dataHandler.writerObject(list, PATH);
     }
 
     @Override
@@ -81,6 +86,6 @@ public class RepoStudent implements InterfaceRepo<Student> {
                 .thenComparing(Student::getId);
         LinkedList<Student> list = findAll();
         list.sort(comparator);
-        Data.writerObject(list, PATH);
+        dataHandler.writerObject(list, PATH);
     }
 }
