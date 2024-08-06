@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 public class RepoInstructor implements IRepoInstructor {
     private static final String PATH = "src/study_case/data/instructor.ser";
-    private IDataHandler dataHandler;
+    private final IDataHandler dataHandler;
 
     public RepoInstructor(IDataHandler dataHandler) {
         this.dataHandler = dataHandler;
@@ -16,8 +16,7 @@ public class RepoInstructor implements IRepoInstructor {
 
     @Override
     public LinkedList<Instructor> findAll() {
-        LinkedList<Instructor> list = dataHandler.readerObject(PATH);
-        return list;
+        return dataHandler.readerObject(PATH);
     }
 
     @Override

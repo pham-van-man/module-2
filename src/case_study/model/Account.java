@@ -19,7 +19,8 @@ public class Account implements Serializable, Comparable<Account> {
     private String nameAccount;
     private String password;
     private String accountNumber;
-    private double balance = 0;
+    private double balance;
+    private double totalRecharge;
 
     public Account(String firstName, String lastName, LocalDate birthDate, String gender, String email, String phoneNumber, String citizenIdentification, String address, String nameAccount, String password, String accountNumber) {
         this.firstName = firstName;
@@ -33,6 +34,8 @@ public class Account implements Serializable, Comparable<Account> {
         this.nameAccount = nameAccount;
         this.password = password;
         this.accountNumber = accountNumber;
+        this.balance = 0;
+        this.totalRecharge = 0;
     }
 
     public String getFirstName() {
@@ -131,6 +134,14 @@ public class Account implements Serializable, Comparable<Account> {
         this.balance = balance;
     }
 
+    public double getTotalRecharge() {
+        return totalRecharge;
+    }
+
+    public void setTotalRecharge(double totalRecharge) {
+        this.totalRecharge = totalRecharge;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -147,22 +158,5 @@ public class Account implements Serializable, Comparable<Account> {
     @Override
     public int compareTo(@NotNull Account o) {
         return this.getNameAccount().compareTo(o.getNameAccount());
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "fistName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthDate=" + birthDate +
-                ", gender='" + gender + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", citizenIdentification='" + citizenIdentification + '\'' +
-                ", address='" + address + '\'' +
-                ", nameAccount='" + nameAccount + '\'' +
-                ", accountNumber=" + accountNumber +
-                ", balance=" + balance +
-                '}';
     }
 }

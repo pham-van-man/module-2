@@ -1,39 +1,36 @@
 package case_study.service;
 
 import case_study.model.Account;
-import case_study.repository.Repository;
-import case_study.ulti.Handler;
 
-import java.util.List;
+public interface ServiceAccount {
 
-public class ServiceAccount implements Service<Account> {
-    @Override
-    public List<Account> finAll(Repository<Account> repository, Handler dataHandler) {
-        return repository.findAll(dataHandler);
-    }
+    Account findByAccount(String nameAccount, String password);
 
-    @Override
-    public Account findByAccount(Repository<Account> repository, Handler dataHandler, String nameAccount, String password) {
-        return repository.findByAccount(dataHandler, nameAccount, password);
-    }
+    void register(Account newAccount);
 
-    @Override
-    public void register(Repository<Account> repository, Handler dataHandler, Account account) {
-        repository.register(dataHandler, account);
-    }
+    boolean checkNameAccount(String nameAccount);
 
-    @Override
-    public boolean checkNameAccount(Repository<Account> repository, Handler dataHandler, String nameAccount) {
-        return repository.checkNameAccount(dataHandler, nameAccount);
-    }
+    boolean checkNumberAccount(String numberAccount);
 
-    @Override
-    public boolean checkNumberAccount(Repository<Account> repository, Handler dataHandler, String numberAccount) {
-        return repository.checkNumberAccount(dataHandler, numberAccount);
-    }
+    void recharge(Account account, double amount);
 
-    @Override
-    public void recharge(Repository<Account> repository, Handler dataHandler, Account account, double amount) {
-        repository.recharge(dataHandler, account, amount);
-    }
+    void changePassword(Account account, String newPassword);
+
+    void changeEmail(Account account, String newEmail);
+
+    void changePhoneNumber(Account account, String newPhoneNumber);
+
+    void writerHistory(Account account, String history);
+
+    String readHistory(Account account);
+
+    boolean isAccountNumber(Account account, String accountNumber);
+
+    boolean isAmount(Account account, double amount);
+
+    void transfer(Account account, String accountNumber, double amount);
+
+    void registerVIP(Account account);
+
+    boolean isVIP(Account account);
 }

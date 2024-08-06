@@ -1,11 +1,5 @@
 package test;
 
-import java.io.*;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class TestIO {
     public static void main(String[] args) {
 //        Student student = new Student("Pham Van Man", 22);
@@ -88,5 +82,8 @@ public class TestIO {
 //        Pattern p = Pattern.compile(s);
 //        Matcher m = p.matcher("+84-891234567");
 //        System.out.println(m.matches());
+        System.out.println("Hello, World!");
+        // Gọi method để làm sạch console
+        System.out.println("Console has been cleared!");
     }
 }
