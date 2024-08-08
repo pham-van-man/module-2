@@ -1,13 +1,14 @@
 package bai_tap_lam_them.view;
 
-import bai_tap_lam_them.controller.ControllerXeMay;
-import bai_tap_lam_them.controller.ControllerXeOto;
-import bai_tap_lam_them.controller.ControllerXeTai;
-
-import java.util.Scanner;
+import bai_tap_lam_them.controller.ControllerMotorbike;
+import bai_tap_lam_them.controller.ControllerCar;
+import bai_tap_lam_them.controller.ControllerTruck;
+import case_study.ulti.ValidateInputValue;
 
 public class Main {
-    private static Scanner sc = new Scanner(System.in);
+    private final static ControllerMotorbike motorbike = new ControllerMotorbike();
+    private final static ControllerCar car = new ControllerCar();
+    private final static ControllerTruck truck = new ControllerTruck();
 
     public static void main(String[] args) {
         do {
@@ -16,7 +17,7 @@ public class Main {
                     "3. Xóa phương tiện \n" +
                     "4. Tìm kiếm \n" +
                     "5. Thoát");
-            int choice = Integer.parseInt(sc.nextLine());
+            int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
                     display();
@@ -36,22 +37,22 @@ public class Main {
         } while (true);
     }
 
-    private static void display() {
+    public static void display() {
         do {
             System.out.println("1. Danh sách xe tải \n" +
                     "2. Danh sách xe oto \n" +
                     "3. Danh sách xe máy \n" +
                     "4. Thoát");
-            int choice = Integer.parseInt(sc.nextLine());
+            int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
-                    ControllerXeTai.display();
+                    truck.display();
                     break;
                 case 2:
-                    ControllerXeOto.display();
+                    car.display();
                     break;
                 case 3:
-                    ControllerXeMay.display();
+                    motorbike.display();
                     break;
                 case 4:
                     return;
@@ -61,26 +62,26 @@ public class Main {
         } while (true);
     }
 
-    private static void search() {
+    public static void search() {
         System.out.println("Tìm kiếm");
-        String inputSearch = sc.nextLine();
-        boolean flag1 = ControllerXeOto.search(inputSearch);
+        String inputSearch = ValidateInputValue.getStringInput("");
+        boolean flag1 = car.search(inputSearch);
         System.out.println();
-        boolean flag2 = ControllerXeMay.sreach(inputSearch);
+        boolean flag2 = motorbike.search(inputSearch);
         System.out.println();
-        boolean flag3 = ControllerXeTai.search(inputSearch);
+        boolean flag3 = truck.search(inputSearch);
         if (!flag1 && !flag2 && !flag3) {
             System.out.println("Không tìm thấy");
         }
     }
 
-    private static void delete() {
+    public static void delete() {
         do {
             System.out.println("1. Xóa xe tải \n" +
                     "2. Xóa xe máy \n" +
                     "3. Xóa xe oto \n" +
                     "4. Thoát");
-            int choice = Integer.parseInt(sc.nextLine());
+            int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
                     break;
@@ -94,22 +95,22 @@ public class Main {
         } while (true);
     }
 
-    private static void add() {
+    public static void add() {
         do {
             System.out.println("1. Thêm xe tải \n" +
                     "2. Thêm xe máy \n" +
                     "3. Thêm xe oto \n" +
                     "4. Thoát");
-            int choice = Integer.parseInt(sc.nextLine());
+            int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
-                    ControllerXeTai.add();
+                    truck.add();
                     break;
                 case 2:
-                    ControllerXeMay.add();
+                    motorbike.add();
                     break;
                 case 3:
-                    ControllerXeOto.add();
+                    car.add();
                     break;
                 case 4:
                     return;

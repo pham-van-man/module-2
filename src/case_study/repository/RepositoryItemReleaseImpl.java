@@ -7,24 +7,24 @@ import case_study.ulti.DataHandlerImpl;
 import java.util.Map;
 
 public class RepositoryItemReleaseImpl implements RepositoryItemRelease {
-    protected String PATH;
-    private final DataHandler dataHandler;
+    protected String path;
+    private final DataHandler DATAHANDLER;
 
     public RepositoryItemReleaseImpl() {
-        PATH = "src/case_study/data/item_release.ser";
-        dataHandler = new DataHandlerImpl();
+        path = "src/case_study/data/item_release.ser";
+        DATAHANDLER = new DataHandlerImpl();
     }
 
     @Override
     public Map<Item, Double> finAll() {
-        return dataHandler.readerObject(PATH);
+        return DATAHANDLER.readerObject(path);
     }
 
     @Override
     public void addItem(Item item, double price) {
         Map<Item, Double> listItemRelease = finAll();
         listItemRelease.put(item, price);
-        dataHandler.writerObject(listItemRelease, PATH);
+        DATAHANDLER.writerObject(listItemRelease, path);
     }
 
     @Override
@@ -59,6 +59,6 @@ public class RepositoryItemReleaseImpl implements RepositoryItemRelease {
     public void removeItem(Item item) {
         Map<Item, Double> listItemRelease = finAll();
         listItemRelease.remove(item);
-        dataHandler.writerObject(listItemRelease, PATH);
+        DATAHANDLER.writerObject(listItemRelease, path);
     }
 }

@@ -5,7 +5,7 @@ import case_study.model.Account;
 public class RepositoryVIPAccountImpl extends RepositoryAccountImpl {
 
     public RepositoryVIPAccountImpl() {
-        PATH = "src/case_study/data/data_vip.ser";
+        path = "src/case_study/data/data_vip.ser";
     }
 
     @Override

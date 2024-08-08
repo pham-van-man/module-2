@@ -77,7 +77,8 @@ public class ControllerAccount {
             System.out.println("| 5. Kho đồ                                        |");
             System.out.println("| 6. Sở giao dịch                                  |");
             System.out.println("| 7. Bày bán                                       |");
-            System.out.println("| 8. Đăng xuất                                     |");
+            System.out.println("| 8. Tin nhắn                                      |");
+            System.out.println("| 9. Đăng xuất                                     |");
             System.out.println("+--------------------------------------------------+");
             int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
@@ -103,10 +104,29 @@ public class ControllerAccount {
                     trade(account);
                     break;
                 case 8:
+                    messenger(account);
+                    break;
+                case 9:
                     logout();
                     return;
                 default:
                     System.out.println("Lựa chọn không hợp lệ!");
+            }
+        }
+    }
+
+    private void messenger(Account account) {
+        System.out.println("+--------------------------------------------------+");
+        System.out.println("|         Tính Năng Đang Được Phát Triển           |");
+        System.out.println("+--------------------------------------------------+");
+        System.out.println("| 1. Trở về                                        |");
+        System.out.println("+--------------------------------------------------+");
+        while (true) {
+            int choice = ValidateInputValue.getIntInput("");
+            if (choice == 1) {
+                return;
+            } else {
+                System.out.println("Lựa chọn không hợp lệ.");
             }
         }
     }

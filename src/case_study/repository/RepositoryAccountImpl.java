@@ -9,17 +9,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 public class RepositoryAccountImpl implements RepositoryAccount {
-    protected String PATH;
-    private final DataHandler dataHandler;
+    protected String path;
+    private final DataHandler DATAHANDLER;
 
     public RepositoryAccountImpl() {
-        PATH = "src/case_study/data/data.ser";
-        dataHandler = new DataHandlerImpl();
+        path = "src/case_study/data/data.ser";
+        DATAHANDLER = new DataHandlerImpl();
     }
 
     @Override
     public Map<Account, String> findAll() {
-        return dataHandler.readerObject(PATH);
+        return DATAHANDLER.readerObject(path);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class RepositoryAccountImpl implements RepositoryAccount {
     public void register(Account account) {
         Map<Account, String> listAccount = findAll();
         listAccount.put(account, "| " + String.format("%-49s", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + ": Khởi Tạo Tài Khoản") + "|\n");
-        dataHandler.writerObject(listAccount, PATH);
+        DATAHANDLER.writerObject(listAccount, path);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class RepositoryAccountImpl implements RepositoryAccount {
                 break;
             }
         }
-        dataHandler.writerObject(listAccount, PATH);
+        DATAHANDLER.writerObject(listAccount, path);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class RepositoryAccountImpl implements RepositoryAccount {
                 break;
             }
         }
-        dataHandler.writerObject(listAccount, PATH);
+        DATAHANDLER.writerObject(listAccount, path);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class RepositoryAccountImpl implements RepositoryAccount {
                 break;
             }
         }
-        dataHandler.writerObject(listAccount, PATH);
+        DATAHANDLER.writerObject(listAccount, path);
     }
 
     @Override
@@ -108,14 +108,14 @@ public class RepositoryAccountImpl implements RepositoryAccount {
                 break;
             }
         }
-        dataHandler.writerObject(listAccount, PATH);
+        DATAHANDLER.writerObject(listAccount, path);
     }
 
     @Override
     public void writerHistory(Account account, String history) {
         Map<Account, String> listHistory = findAll();
         listHistory.put(account, history + listHistory.get(account));
-        dataHandler.writerObject(listHistory, PATH);
+        DATAHANDLER.writerObject(listHistory, path);
     }
 
     @Override
@@ -181,21 +181,21 @@ public class RepositoryAccountImpl implements RepositoryAccount {
                 break;
             }
         }
-        dataHandler.writerObject(accounts, PATH);
+        DATAHANDLER.writerObject(accounts, path);
     }
 
     @Override
     public void registerVIP(Account account) {
         String PATH = "src/case_study/data/data_vip.ser";
-        Map<Account, String> listVIPAccount = dataHandler.readerObject(PATH);
+        Map<Account, String> listVIPAccount = DATAHANDLER.readerObject(PATH);
         listVIPAccount.put(account, "| " + String.format("%-49s", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + ": Khởi Tạo Tài Khoản VIP") + "|\n");
-        dataHandler.writerObject(listVIPAccount, PATH);
+        DATAHANDLER.writerObject(listVIPAccount, PATH);
     }
 
     @Override
     public boolean isVIP(Account account) {
         String PATH = "src/case_study/data/data_vip.ser";
-        Map<Account, String> listVIPAccount = dataHandler.readerObject(PATH);
+        Map<Account, String> listVIPAccount = DATAHANDLER.readerObject(PATH);
         return listVIPAccount.containsKey(account);
     }
 }

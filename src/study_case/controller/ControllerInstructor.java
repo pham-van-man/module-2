@@ -1,12 +1,12 @@
 package study_case.controller;
 
 import study_case.model.Instructor;
-import study_case.service.IServiceInstructor;
 import study_case.service.ServiceInstructor;
+import study_case.service.ServiceInstructorImpl;
 import study_case.util.Validate;
 
 public class ControllerInstructor {
-    private static IServiceInstructor service = new ServiceInstructor();
+    private static ServiceInstructor service = new ServiceInstructorImpl();
 
     public static void teacherMenu() {
         while (true) {

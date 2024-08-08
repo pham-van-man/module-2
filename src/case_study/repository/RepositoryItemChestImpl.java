@@ -10,24 +10,24 @@ import java.util.List;
 import java.util.Map;
 
 public class RepositoryItemChestImpl implements RepositoryItemChest {
-    protected String PATH;
-    private final DataHandler dataHandler;
+    protected String path;
+    private final DataHandler DATAHANDLER;
 
     public RepositoryItemChestImpl() {
-        PATH = "src/case_study/data/item_chest.ser";
-        dataHandler = new DataHandlerImpl();
+        path = "src/case_study/data/item_chest.ser";
+        DATAHANDLER = new DataHandlerImpl();
     }
 
     @Override
     public Map<Account, List<Item>> findAll() {
-        return dataHandler.readerObject(PATH);
+        return DATAHANDLER.readerObject(path);
     }
 
     @Override
     public void register(Account newAccount) {
         Map<Account, List<Item>> listItemChest = findAll();
         listItemChest.put(newAccount, new LinkedList<>());
-        dataHandler.writerObject(listItemChest, PATH);
+        DATAHANDLER.writerObject(listItemChest, path);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class RepositoryItemChestImpl implements RepositoryItemChest {
     public void addItem(Account account, Item item) {
         Map<Account, List<Item>> listItemChest = findAll();
         listItemChest.get(account).add(item);
-        dataHandler.writerObject(listItemChest, PATH);
+        DATAHANDLER.writerObject(listItemChest, path);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class RepositoryItemChestImpl implements RepositoryItemChest {
                 break;
             }
         }
-        dataHandler.writerObject(listItemChest, PATH);
+        DATAHANDLER.writerObject(listItemChest, path);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class RepositoryItemChestImpl implements RepositoryItemChest {
                 break;
             }
         }
-        dataHandler.writerObject(listItemChest, PATH);
+        DATAHANDLER.writerObject(listItemChest, path);
     }
 
     @Override
@@ -101,6 +101,6 @@ public class RepositoryItemChestImpl implements RepositoryItemChest {
                 break;
             }
         }
-        dataHandler.writerObject(listItemChest, PATH);
+        DATAHANDLER.writerObject(listItemChest, path);
     }
 }
