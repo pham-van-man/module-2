@@ -18,9 +18,13 @@ public class Motorbike extends Vehicle {
 
     @Override
     public String toString() {
-        return "Motorcycle{" +
-                "horsepower='" + wattage + '\'' +
+        return "Motorbike{" +
+                "wattage='" + wattage + '\'' +
                 "} " + super.toString();
     }
 
+    @Override
+    public String getContent() {
+        return getLicensePlate() + "," + getBrand().getContent() + "," + getReleaseDate() + "," + getOwner() + "," + getWattage();
+    }
 }

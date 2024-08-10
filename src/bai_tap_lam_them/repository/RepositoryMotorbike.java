@@ -1,6 +1,10 @@
 package bai_tap_lam_them.repository;
 
-import bai_tap_lam_them.model.Motorbike;
+import bai_tap_lam_them.ulti.CreateMotorbike;
 
-public interface RepositoryMotorbike extends RepositoryVehicle<Motorbike> {
+public class RepositoryMotorbike extends RepositoryVehicle {
+    public RepositoryMotorbike() {
+        path = "src/bai_tap_lam_them/data/motorbike.csv";
+        create = new CreateMotorbike();
+    }
 }

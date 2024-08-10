@@ -20,8 +20,9 @@ public class RepositoryBrandImpl implements RepositoryBrand {
         List<String[]> listContent = DATA_HANDLER.readerString(PATH);
         List<Brand> brandList = new ArrayList<>();
         for (String[] content : listContent) {
-            brandList.add(Brand.createBrand(content));
+            brandList.add(Brand.getBrand(content));
         }
         return brandList;
     }
+
 }

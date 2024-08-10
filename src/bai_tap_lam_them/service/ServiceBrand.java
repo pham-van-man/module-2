@@ -2,8 +2,8 @@ package bai_tap_lam_them.service;
 
 import bai_tap_lam_them.model.Brand;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface ServiceBrand {
-    ArrayList<Brand> findAll();
+    List<Brand> findAll();
 }

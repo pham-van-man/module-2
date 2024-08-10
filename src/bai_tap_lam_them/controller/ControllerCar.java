@@ -2,79 +2,92 @@ package bai_tap_lam_them.controller;
 
 import bai_tap_lam_them.model.Brand;
 import bai_tap_lam_them.model.Car;
+import bai_tap_lam_them.model.Vehicle;
 import bai_tap_lam_them.service.ServiceBrand;
 import bai_tap_lam_them.service.ServiceBrandImpl;
 import bai_tap_lam_them.service.ServiceCar;
-import bai_tap_lam_them.service.ServiceCarImpl;
+import bai_tap_lam_them.service.ServiceVehicle;
 import case_study.ulti.ValidateInputValue;
 
+import java.util.List;
+
 public class ControllerCar {
-    private final ServiceCar SERVICE_CAR = new ServiceCarImpl();
-    private Brand brand;
+    private final ServiceVehicle SERVICE = new ServiceCar();
+    private final String[] TYPE = {"Du lich", "Xe khach"};
     private final ServiceBrand SERVICE_BRAND = new ServiceBrandImpl();
+    private final List<Brand> brandList = SERVICE_BRAND.findAll();
 
     public void display() {
-        for (Car xeOto : SERVICE_CAR.findAll()) {
-            System.out.println(xeOto);
+        for (Vehicle vehicle : SERVICE.findAll()) {
+            System.out.println(vehicle);
         }
     }
 
     public void add() {
-        String licensePlate = ValidateInputValue.getStringInput("Biển số xe: ");
-        boolean flag = true;
+        String licensePlate = ValidateInputValue.getStringInput("Biển số: ");
+        Brand brand = null;
         do {
             System.out.println("Chọn hãng sản xuất: ");
-            System.out.println(
-                    "1. Yamaha \n" +
-                            "2. Honda \n" +
-                            "3. Suzuki");
+            System.out.println("1. Yamaha");
+            System.out.println("2. Honda");
+            System.out.println("3. Suzuki");
             int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
-                    for (Brand brand : SERVICE_BRAND.findAll()) {
-                        if (brand.getName().equals("Yamaha")) {
-                            this.brand = brand;
-                        }
-                    }
-                    flag = false;
+                    brand = brandList.getFirst();
                     break;
                 case 2:
-                    for (Brand brand : SERVICE_BRAND.findAll()) {
-                        if (brand.getName().equals("Honda")) {
-                            this.brand = brand;
-                        }
-                    }
-                    flag = false;
+                    brand = brandList.get(1);
                     break;
                 case 3:
-                    for (Brand brand : SERVICE_BRAND.findAll()) {
-                        if (brand.getName().equals("Suzuki")) {
-                            this.brand = brand;
-                        }
-                    }
-                    flag = false;
+                    brand = brandList.getLast();
                     break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ!");
             }
 
-        } while (flag);
+        } while (brand == null);
         String releaseDate = ValidateInputValue.getStringInput("Năm sản xuất: ");
         String owner = ValidateInputValue.getStringInput("Chủ sở hửu: ");
         int seatingCapacity = ValidateInputValue.getIntInput("Chỗ ngồi: ");
-        String carModel = ValidateInputValue.getStringInput("Kiểu xe: ");
-        Car newCar = new Car(licensePlate, brand, releaseDate, owner, seatingCapacity, carModel);
-        SERVICE_CAR.findAll().add(newCar);
+        System.out.println("Kiểu xe (1. Du lịch/2.Xe Khách): ");
+        String carModel = null;
+        do {
+            int choice = ValidateInputValue.getIntInput("");
+            switch (choice) {
+                case 1:
+                    carModel = TYPE[0];
+                    break;
+                case 2:
+                    carModel = TYPE[1];
+                    break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ!");
+            }
+        } while (carModel == null);
+        Vehicle newCar = new Car(licensePlate, brand, releaseDate, owner, seatingCapacity, carModel);
+        SERVICE.add(newCar);
     }
 
     public boolean search(String inputSearch) {
         boolean flag = false;
-        for (Car car : SERVICE_CAR.findAll()) {
-            if (car.getLicensePlate().toLowerCase().contains(inputSearch.toLowerCase())) {
-                System.out.println(car);
+        for (Vehicle vehicle : SERVICE.findAll()) {
+            if (vehicle.getLicensePlate().toLowerCase().contains(inputSearch.toLowerCase())) {
+                System.out.println(vehicle);
                 flag = true;
             }
         }
         return flag;
+    }
+
+    public Vehicle delete() {
+        String licensePlate = ValidateInputValue.getStringInput("Biển số: ");
+        Vehicle vehicle;
+        if ((vehicle = SERVICE.getVehicle(licensePlate)) != null) {
+            SERVICE.delete(vehicle);
+            return vehicle;
+        } else {
+            return null;
+        }
     }
 }

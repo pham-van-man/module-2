@@ -49,10 +49,10 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
-        return "vehicle{" +
-                "numberPlate='" + licensePlate + '\'' +
-                ", manufacturer='" + brand + '\'' +
-                ", manufactureYear='" + releaseDate + '\'' +
+        return "Vehicle{" +
+                "licensePlate='" + licensePlate + '\'' +
+                ", brand=" + brand +
+                ", releaseDate='" + releaseDate + '\'' +
                 ", owner='" + owner + '\'' +
                 '}';
     }
@@ -69,4 +69,6 @@ public abstract class Vehicle {
     public int hashCode() {
         return Objects.hashCode(licensePlate);
     }
+
+    public abstract String getContent();
 }

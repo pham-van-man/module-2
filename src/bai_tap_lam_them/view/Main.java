@@ -3,6 +3,7 @@ package bai_tap_lam_them.view;
 import bai_tap_lam_them.controller.ControllerMotorbike;
 import bai_tap_lam_them.controller.ControllerCar;
 import bai_tap_lam_them.controller.ControllerTruck;
+import bai_tap_lam_them.model.Vehicle;
 import case_study.ulti.ValidateInputValue;
 
 public class Main {
@@ -12,11 +13,11 @@ public class Main {
 
     public static void main(String[] args) {
         do {
-            System.out.println("1. Xem danh sách \n" +
-                    "2. Thêm phương tiện \n" +
-                    "3. Xóa phương tiện \n" +
-                    "4. Tìm kiếm \n" +
-                    "5. Thoát");
+            System.out.println("1. Xem danh sách");
+            System.out.println("2. Thêm phương tiện");
+            System.out.println("3. Xóa phương tiện");
+            System.out.println("4. Tìm kiếm");
+            System.out.println("5. Thoát");
             int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
@@ -33,16 +34,18 @@ public class Main {
                     break;
                 case 5:
                     return;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ!");
             }
         } while (true);
     }
 
     public static void display() {
         do {
-            System.out.println("1. Danh sách xe tải \n" +
-                    "2. Danh sách xe oto \n" +
-                    "3. Danh sách xe máy \n" +
-                    "4. Thoát");
+            System.out.println("1. Danh sách xe tải");
+            System.out.println("2. Danh sách xe oto");
+            System.out.println("3. Danh sách xe máy");
+            System.out.println("4. Thoát");
             int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
@@ -77,17 +80,20 @@ public class Main {
 
     public static void delete() {
         do {
-            System.out.println("1. Xóa xe tải \n" +
-                    "2. Xóa xe máy \n" +
-                    "3. Xóa xe oto \n" +
-                    "4. Thoát");
+            System.out.println("1. Xóa xe tải");
+            System.out.println("2. Xóa xe máy");
+            System.out.println("3. Xóa xe oto");
+            System.out.println("4. Thoát");
             int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
+                    deleteVehicle(truck.delete());
                     break;
                 case 2:
+                    deleteVehicle(motorbike.delete());
                     break;
                 case 3:
+                    deleteVehicle(car.delete());
                     break;
                 case 4:
                     return;
@@ -95,12 +101,20 @@ public class Main {
         } while (true);
     }
 
+    private static void deleteVehicle(Vehicle vehicle) {
+        if (vehicle != null) {
+            System.out.println("Xóa thành công");
+        } else {
+            System.out.println("Không tìm thấy biển số!");
+        }
+    }
+
     public static void add() {
         do {
-            System.out.println("1. Thêm xe tải \n" +
-                    "2. Thêm xe máy \n" +
-                    "3. Thêm xe oto \n" +
-                    "4. Thoát");
+            System.out.println("1. Thêm xe tải");
+            System.out.println("2. Thêm xe máy");
+            System.out.println("3. Thêm xe oto");
+            System.out.println("4. Thoát");
             int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
@@ -115,7 +129,7 @@ public class Main {
                 case 4:
                     return;
                 default:
-                    System.out.println("Lựa chọn không hợp lệ");
+                    System.out.println("Lựa chọn không hợp lệ!");
             }
         } while (true);
     }

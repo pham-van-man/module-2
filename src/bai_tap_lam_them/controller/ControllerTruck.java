@@ -2,57 +2,57 @@ package bai_tap_lam_them.controller;
 
 import bai_tap_lam_them.model.Brand;
 import bai_tap_lam_them.model.Truck;
-import bai_tap_lam_them.service.ServiceVehicle;
+import bai_tap_lam_them.model.Vehicle;
 import bai_tap_lam_them.service.ServiceBrand;
 import bai_tap_lam_them.service.ServiceBrandImpl;
-import bai_tap_lam_them.service.ServiceTruckImpl;
-
-import java.util.Scanner;
+import bai_tap_lam_them.service.ServiceTruck;
+import bai_tap_lam_them.service.ServiceVehicle;
+import case_study.ulti.ValidateInputValue;
 
 public class ControllerTruck {
-    private final ServiceVehicle<Truck> SERVICE_TRUCK = new ServiceTruckImpl();
-    private final Scanner SC = new Scanner(System.in);
+    private final ServiceVehicle SERVICE = new ServiceTruck();
     private Brand brand;
     private final ServiceBrand SERVICE_BRAND = new ServiceBrandImpl();
 
     public void display() {
-        for (Truck truck : SERVICE_TRUCK.findAll()) {
-            System.out.println(truck);
+        for (Vehicle vehicle : SERVICE.findAll()) {
+            System.out.println(vehicle);
         }
     }
 
     public void add() {
-        System.out.println("Nhập biển số xe");
-        String licensePlate = SC.nextLine();
+        String licensePlate = ValidateInputValue.getStringInput("Biển số xe: ");
         boolean flag = true;
         do {
-            System.out.println("Chọn hãng sản xuất");
-            System.out.println("" +
-                    "1. Yamaha \n" +
-                    "2. Honda \n" +
-                    "3. Suzuki");
-            int choice = Integer.parseInt(SC.nextLine());
+            System.out.println("Chọn hãng sản xuất: ");
+            System.out.println("1. Yamaha");
+            System.out.println("2. Honda");
+            System.out.println("3. Suzuki");
+            int choice = ValidateInputValue.getIntInput("");
             switch (choice) {
                 case 1:
-                    for (Brand hangSanXuatXe : SERVICE_BRAND.findAll()) {
-                        if (hangSanXuatXe.getName().equals("Yamaha")) {
-                            brand = hangSanXuatXe;
+                    for (Brand brand : SERVICE_BRAND.findAll()) {
+                        if (brand.getName().equals("Yamaha")) {
+                            this.brand = brand;
+                            break;
                         }
                     }
                     flag = false;
                     break;
                 case 2:
-                    for (Brand hangSanXuatXe : SERVICE_BRAND.findAll()) {
-                        if (hangSanXuatXe.getName().equals("Honda")) {
-                            brand = hangSanXuatXe;
+                    for (Brand brand : SERVICE_BRAND.findAll()) {
+                        if (brand.getName().equals("Honda")) {
+                            this.brand = brand;
+                            break;
                         }
                     }
                     flag = false;
                     break;
                 case 3:
-                    for (Brand hangSanXuatXe : SERVICE_BRAND.findAll()) {
-                        if (hangSanXuatXe.getName().equals("Suzuki")) {
-                            brand = hangSanXuatXe;
+                    for (Brand brand : SERVICE_BRAND.findAll()) {
+                        if (brand.getName().equals("Suzuki")) {
+                            this.brand = brand;
+                            break;
                         }
                     }
                     flag = false;
@@ -62,24 +62,32 @@ public class ControllerTruck {
             }
 
         } while (flag);
-        System.out.println("Nhập năm sản xuất");
-        String releaseDate = SC.nextLine();
-        System.out.println("Nhập chủ sở hửu");
-        String owner = SC.nextLine();
-        System.out.println("Nhập trọng tải");
-        String payload = SC.nextLine();
-        Truck newTruck = new Truck(licensePlate, brand, releaseDate, owner, payload);
-        SERVICE_TRUCK.findAll().add(newTruck);
+        String releaseDate = ValidateInputValue.getStringInput("Năm sản xuất: ");
+        String owner = ValidateInputValue.getStringInput("Chủ sở hửu: ");
+        String payload = ValidateInputValue.getStringInput("Trọng tải: ");
+        Vehicle newTruck = new Truck(licensePlate, brand, releaseDate, owner, payload);
+        SERVICE.add(newTruck);
     }
 
     public boolean search(String inputSearch) {
         boolean flag = false;
-        for (Truck xeTai : SERVICE_TRUCK.findAll()) {
-            if (xeTai.getLicensePlate().toLowerCase().contains(inputSearch.toLowerCase())) {
-                System.out.println(xeTai);
+        for (Vehicle vehicle : SERVICE.findAll()) {
+            if (vehicle.getLicensePlate().toLowerCase().contains(inputSearch.toLowerCase())) {
+                System.out.println(vehicle);
                 flag = true;
             }
         }
         return flag;
+    }
+
+    public Vehicle delete() {
+        String licensePlate = ValidateInputValue.getStringInput("Biển số: ");
+        Vehicle vehicle;
+        if ((vehicle = SERVICE.getVehicle(licensePlate)) != null) {
+            SERVICE.delete(vehicle);
+            return vehicle;
+        } else {
+            return null;
+        }
     }
 }

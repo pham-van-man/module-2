@@ -10,14 +10,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidateInputValue {
-    private static final Scanner sc = new Scanner(System.in);
+    private static final Scanner SC = new Scanner(System.in);
 
     public static int getIntInput(String prompt) {
         int value;
         while (true) {
             try {
                 System.out.println(prompt);
-                value = Integer.parseInt(sc.nextLine());
+                value = Integer.parseInt(SC.nextLine());
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Dữ liệu không hợp lệ!");
@@ -29,7 +29,7 @@ public class ValidateInputValue {
     public static String getStringInput(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             if (!value.isEmpty()) {
                 value = value.replaceAll("\\s+", " ");
                 return value;
@@ -41,7 +41,7 @@ public class ValidateInputValue {
     public static String getEmailInput(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             if (!value.isEmpty()) {
                 value = value.replaceAll("\\s+", "");
                 Pattern pattern = Pattern.compile("^[A-Za-z0-9]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
@@ -57,7 +57,7 @@ public class ValidateInputValue {
     public static String getPhoneNumberInput(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             if (!value.isEmpty()) {
                 value = value.replaceAll("\\s+", "");
                 Pattern pattern = Pattern.compile("^0[0-9]{9}$");
@@ -73,7 +73,7 @@ public class ValidateInputValue {
     public static LocalDate getDateInput(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             if (!value.isEmpty()) {
                 value = value.replaceAll("\\s+", "");
                 Pattern pattern = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
@@ -94,7 +94,7 @@ public class ValidateInputValue {
         ServiceAccount service = new ServiceAccountImpl();
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             if (!value.isEmpty()) {
                 value = value.replaceAll("\\s+", "");
                 if (service.checkNameAccount(value)) {
@@ -111,11 +111,11 @@ public class ValidateInputValue {
     public static String getPassword(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             boolean isValid = Pattern.matches("^[^ ]+$", value);
             if (isValid) {
                 System.out.println("Nhập lại mật khẩu.");
-                String valueCheck = sc.nextLine();
+                String valueCheck = SC.nextLine();
                 if (value.equals(valueCheck)) {
                     return value;
                 } else {
@@ -131,7 +131,7 @@ public class ValidateInputValue {
         ServiceAccount service = new ServiceAccountImpl();
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             boolean isValid = Pattern.matches("^[^ ]{10}$", value);
             if (isValid) {
                 boolean isNameAccount = service.checkNumberAccount(value);
@@ -149,7 +149,7 @@ public class ValidateInputValue {
     public static String getCitizenIdentification(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             boolean isValid = Pattern.matches("^(\\d{12}|\\d{9})$", value);
             if (isValid) {
                 return value;
@@ -162,7 +162,7 @@ public class ValidateInputValue {
     public static String getNameAccountOrPassword(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             if (!value.isEmpty()) {
                 value = value.replaceAll("\\s+", "");
                 return value;
@@ -174,7 +174,7 @@ public class ValidateInputValue {
     public static String getSeriCard(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             if (!value.isEmpty()) {
                 value = value.replaceAll("\\s+", "");
                 boolean isValid = Pattern.matches("^(\\d{14})$", value);
@@ -189,7 +189,7 @@ public class ValidateInputValue {
     public static String getCodeCard(String prompt) {
         while (true) {
             System.out.println(prompt);
-            String value = sc.nextLine().trim();
+            String value = SC.nextLine().trim();
             if (!value.isEmpty()) {
                 value = value.replaceAll("\\s+", "");
                 boolean isValid = Pattern.matches("^(\\d{15})$", value);
@@ -205,7 +205,7 @@ public class ValidateInputValue {
         while (true) {
             System.out.println(prompt);
             try {
-                double value = Double.parseDouble(sc.nextLine());
+                double value = Double.parseDouble(SC.nextLine());
                 if (value < 5000) {
                     System.out.println("Số tiền giao dịch ít nhất là 5000 VND!");
                 } else {

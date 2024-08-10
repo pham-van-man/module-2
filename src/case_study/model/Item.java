@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Item implements Serializable, Comparable<Item> {
     private static final long serialVersionUID = 2L;
-    private static final AtomicInteger idCounter = new AtomicInteger(0);
+    private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
     private String name;
     private String material;
     private LocalDate releaseDate;
@@ -26,7 +26,7 @@ public class Item implements Serializable, Comparable<Item> {
         this.material = material;
         this.releaseDate = releaseDate;
         this.country = country;
-        this.identifier = String.format("%04d", idCounter.incrementAndGet());
+        this.identifier = String.format("%04d", ID_COUNTER.incrementAndGet());
         this.creationDate = LocalDate.now();
         this.description = description;
         this.own = own;

@@ -22,4 +22,11 @@ public class Truck extends Vehicle {
                 "payload='" + payload + '\'' +
                 "} " + super.toString();
     }
+
+
+
+    @Override
+    public String getContent() {
+        return getLicensePlate() + "," + getBrand().getContent() + "," + getReleaseDate() + "," + getOwner() + "," + getPayload();
+    }
 }

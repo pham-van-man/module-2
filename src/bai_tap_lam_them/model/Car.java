@@ -29,15 +29,12 @@ public class Car extends Vehicle {
     @Override
     public String toString() {
         return "Car{" +
-                "seatingCapacity='" + seatNumber + '\'' +
-                ", carModel='" + type + '\'' +
+                "seatNumber=" + seatNumber +
+                ", type='" + type + '\'' +
                 "} " + super.toString();
     }
 
-    public static Car createCar(String[] content) {
-        return new Car(content[0], new Brand(content[1], content[2], content[3]), content[4], content[5], Integer.parseInt(content[6]), content[7]);
-    }
-
+    @Override
     public String getContent() {
         return getLicensePlate() + "," + getBrand().getContent() + "," + getReleaseDate() + "," + getOwner() + "," + getSeatNumber() + "," + getType();
     }

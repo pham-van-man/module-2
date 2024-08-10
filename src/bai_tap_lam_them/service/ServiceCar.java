@@ -1,6 +1,9 @@
 package bai_tap_lam_them.service;
 
-import bai_tap_lam_them.model.Car;
+import bai_tap_lam_them.repository.RepositoryCar;
 
-public interface ServiceCar extends ServiceVehicle<Car> {
+public class ServiceCar extends ServiceVehicle {
+    public ServiceCar() {
+        repositoryVehicle = new RepositoryCar();
+    }
 }

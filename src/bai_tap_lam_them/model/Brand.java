@@ -37,14 +37,14 @@ public class Brand {
 
     @Override
     public String toString() {
-        return "HangSanXuat{" +
-                "maSanXuat='" + code + '\'' +
-                ", tenHangSanXuat='" + name + '\'' +
-                ", quocGia='" + country + '\'' +
+        return "Brand{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", country='" + country + '\'' +
                 '}';
     }
 
-    public static Brand createBrand(String[] content) {
+    public static Brand getBrand(String[] content) {
         return new Brand(content[0], content[1], content[2]);
     }
 

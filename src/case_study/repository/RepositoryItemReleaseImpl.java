@@ -8,23 +8,23 @@ import java.util.Map;
 
 public class RepositoryItemReleaseImpl implements RepositoryItemRelease {
     protected String path;
-    private final DataHandler DATAHANDLER;
+    private final DataHandler DATA_HANDLER;
 
     public RepositoryItemReleaseImpl() {
         path = "src/case_study/data/item_release.ser";
-        DATAHANDLER = new DataHandlerImpl();
+        DATA_HANDLER = new DataHandlerImpl();
     }
 
     @Override
     public Map<Item, Double> finAll() {
-        return DATAHANDLER.readerObject(path);
+        return DATA_HANDLER.readerObject(path);
     }
 
     @Override
     public void addItem(Item item, double price) {
         Map<Item, Double> listItemRelease = finAll();
         listItemRelease.put(item, price);
-        DATAHANDLER.writerObject(listItemRelease, path);
+        DATA_HANDLER.writerObject(listItemRelease, path);
     }
 
     @Override
@@ -59,6 +59,6 @@ public class RepositoryItemReleaseImpl implements RepositoryItemRelease {
     public void removeItem(Item item) {
         Map<Item, Double> listItemRelease = finAll();
         listItemRelease.remove(item);
-        DATAHANDLER.writerObject(listItemRelease, path);
+        DATA_HANDLER.writerObject(listItemRelease, path);
     }
 }
